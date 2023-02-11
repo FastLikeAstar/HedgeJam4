@@ -6,15 +6,7 @@ extends KinematicBody2D
 # var b = "text"
 onready var camera_position
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
 
-func add_camera(camera_path):
-	$RemoteTransform2D.remote_path = camera_path;
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 var maxSpeed = 850;
 var baseSpeed = 800;  # speed in pixels/sec
@@ -28,12 +20,24 @@ var attemptedSpeed = 0;
 var runDecrease = 1;
 
 
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+func add_camera(camera_path):
+	$RemoteTransform2D.remote_path = camera_path;
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
 func get_input():
 	velocity = Vector2.ZERO
 	if Input.is_action_pressed('right'):
 		velocity.x += 1
+		$AnimatedSprite.set_frame(0);
 	if Input.is_action_pressed('left'):
 		velocity.x -= 1
+		$AnimatedSprite.set_frame(1);
 	if Input.is_action_pressed('down'):
 		velocity.y += 1
 	if Input.is_action_pressed('up'):
