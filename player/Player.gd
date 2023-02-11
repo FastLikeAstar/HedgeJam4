@@ -30,7 +30,7 @@ var size = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	add_to_group("player");
 
 func add_camera(camera_path):
 	$RemoteTransform2D.remote_path = camera_path;

@@ -66,7 +66,7 @@ func _link_signals():
 func _spawn_trees():
 	pass 
 
-func update_fruit():
+func update_fruit(fruitType):
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
