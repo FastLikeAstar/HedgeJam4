@@ -1,4 +1,4 @@
-extends AnimatedSprite
+extends KinematicBody2D
 
 
 # Declare member variables here. Examples:
@@ -6,7 +6,7 @@ extends AnimatedSprite
 # var b = "text"
 
 
-signal consumed;
+signal fruit_consumed;
 var fruitType;
 
 # Called when the node enters the scene tree for the first time.

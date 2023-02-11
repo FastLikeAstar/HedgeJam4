@@ -15,12 +15,14 @@ func _ready():
 	guiScene = load("res://Gui.tscn");
 	var treeScene = load("res://level/Tree.tscn");
 	var camera_path = $Camera2D.get_path();
-	bgTrees = Array();
+	bgTrees = [];
 	var tempX;
 	var tempY;
 	var treeSizeOffset = 512;
 	var tree;
 	var treeCount = 0;
+	var fruitLevel;
+
 
 	var rng = RandomNumberGenerator.new();
 	rng.randomize();
@@ -45,6 +47,10 @@ func _ready():
 				treeCount = rng.randi_range(0,4);
 				
 					
+	for n in bgTrees:
+		var fruits = n.create_fruits(rng);
+		for m in fruits:
+			m.connect("fruit_consumed", self, "update_fruit");
 		
 	# Instance
 	var player = playerScene.instance();
@@ -60,7 +66,8 @@ func _link_signals():
 func _spawn_trees():
 	pass 
 
-
+func update_fruit():
+	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
