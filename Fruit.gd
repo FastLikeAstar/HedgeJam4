@@ -6,7 +6,7 @@ extends KinematicBody2D
 # var b = "text"
 
 
-signal consumed;
+signal fruit_consumed;
 var fruitType;
 
 # Called when the node enters the scene tree for the first time.

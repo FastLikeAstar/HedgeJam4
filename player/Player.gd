@@ -1,6 +1,13 @@
 extends KinematicBody2D
 
 
+
+enum movement_state{
+	idle,
+	running
+}
+
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -18,6 +25,7 @@ var actualSpeed = 0;
 var currentSpeedLevel = 0;
 var attemptedSpeed = 0;
 var runDecrease = 1;
+var size = 0;
 
 
 # Called when the node enters the scene tree for the first time.
