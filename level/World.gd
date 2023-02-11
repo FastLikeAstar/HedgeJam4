@@ -7,6 +7,11 @@ extends Node2D
 var playerScene
 var guiScene
 var bgTrees
+var ultraRares;
+var rares;
+var uncommons;
+var commons;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	VisualServer.set_default_clear_color(Color("#012410"));
@@ -22,18 +27,42 @@ func _ready():
 	var tree;
 	var treeCount = 0;
 	var fruitLevel;
+	
+	ultraRares = 0;
+	rares = 3;
+	uncommons = 6;
+	commons = 10;
 
 
 	var rng = RandomNumberGenerator.new();
 	rng.randomize();
 	
-	var my_random_number = rng.randf_range(-64.0, 64.0);
+	var treeTypesRarity = [];
+	# Add rarities
+	for n in ultraRares:
+		treeTypesRarity.append(0); # 0 is the type that is ultra rare
+	for n in rares:
+		treeTypesRarity.append(1); # 1 is the type that is rare
+		treeTypesRarity.append(2); # 2 is another rare type
+	for n in rares:
+		treeTypesRarity.append(3); # 1 is the type that is rare
+		treeTypesRarity.append(4); # 2 is another rare type
+	for n in rares:
+		treeTypesRarity.append(5); # 1 is the type that is rare
+		treeTypesRarity.append(6); # 2 is another rare type
+		treeTypesRarity.append(7); # 2 is another rare type
+		treeTypesRarity.append(8); # 2 is another rare type
+		
+	treeTypesRarity.shuffle();
+	
+	var my_random_number = rng.randf_range(0, 64.0);
 	
 	for n in range(-30, 30, 1):
 		tempX = n * treeSizeOffset;
 		for m in range(-30, 30, 1):
 			if (treeCount < 3):
 				tree = treeScene.instance();
+				tree.type = treeTypesRarity.pop_back();
 				my_random_number = rng.randf_range(-64.0, 64.0);
 				tempY = m * treeSizeOffset;
 				tree.position.x = tempX + my_random_number;

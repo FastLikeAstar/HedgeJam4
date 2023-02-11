@@ -17,6 +17,9 @@ func _on_Player_area_entered(area):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+
 func create_fruits(rng):
 	var my_random_number = rng.randi_range(0, 2);
 	var fruits = [];
