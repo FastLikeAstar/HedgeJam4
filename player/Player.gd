@@ -25,7 +25,14 @@ var actualSpeed = 0;
 var currentSpeedLevel = 0;
 var attemptedSpeed = 0;
 var runDecrease = 1;
-var size = 0;
+var fruitLevel = 0;
+var fruitPointBreakPoint = 20;
+var fruitPoints = 0;
+var lowestSpeed = baseSpeed - 100;
+
+signal level_up;
+signal current_points;
+signal game_win;
 
 
 # Called when the node enters the scene tree for the first time.
@@ -57,11 +64,28 @@ func get_input():
 		
 	# Make sure diagonal movement isn't faster
 	attemptedSpeed = baseSpeed + bonusSpeed + runBonus;
-	actualSpeed = clamp(attemptedSpeed, attemptedSpeed, maxSpeed);
+	actualSpeed = clamp(attemptedSpeed, 0, maxSpeed+bonusSpeed);
 	velocity = velocity.normalized() * actualSpeed;
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	get_input();
 	velocity = move_and_slide(velocity);
 	if (runBonus > 0 && Input.is_action_pressed("run_faster")):
 		runBonus -= runDecrease;
+
+func change_speed(speedDelta):
+	if (bonusSpeed + baseSpeed) < lowestSpeed:
+		if speedDelta < 0:
+			bonusSpeed +=(speedDelta * 4);
+	else:
+		bonusSpeed += speedDelta;
+
+func change_points(deltaPoints):
+	fruitPoints += deltaPoints;
+	if fruitPoints > fruitPointBreakPoint:
+		fruitLevel += 1;
+		if fruitLevel > 5:
+			emit_signal("game_win");
+		else:
+			emit_signal("level_up", fruitLevel);
+	emit_signal("current_points", fruitPoints, fruitLevel);

@@ -12,8 +12,7 @@ var baseFruitSpawn = 1;
 func _ready():
 	fruitToSpawn = load("res://Fruit.tscn") # Replace with function body.
 
-func _on_Player_area_entered(area):
-	emit_signal("hit_tree");
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -43,7 +42,7 @@ func create_fruits(rng):
 		else:
 			my_random_number = rng.randi_range(64,191); # 255 - 64 & 0 +64
 			fruit.position = Vector2(my_random_number, -255);
-
+		fruit.fruitType = treeType;
 		fruits.append(fruit);
 	
 

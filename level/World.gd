@@ -11,6 +11,9 @@ var ultraRares;
 var rares;
 var uncommons;
 var commons;
+var player;
+var previousFruit;
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,7 +29,9 @@ func _ready():
 	var treeSizeOffset = 512;
 	var tree;
 	var treeCount = 0;
-	var fruitLevel;
+
+	
+
 	
 	ultraRares = 0;
 	rares = 3;
@@ -62,7 +67,7 @@ func _ready():
 		for m in range(-30, 30, 1):
 			if (treeCount < 3):
 				tree = treeScene.instance();
-				tree.type = treeTypesRarity.pop_back();
+				tree.treeType = treeTypesRarity.pop_back();
 				my_random_number = rng.randf_range(-64.0, 64.0);
 				tempY = m * treeSizeOffset;
 				tree.position.x = tempX + my_random_number;
@@ -79,24 +84,49 @@ func _ready():
 	for n in bgTrees:
 		var fruits = n.create_fruits(rng);
 		for m in fruits:
-			m.connect("fruit_consumed", self, "update_fruit");
+			m.connect("fruit_consumed", self, "fruit_consumed_update");
 		
 	# Instance
-	var player = playerScene.instance();
+	player = playerScene.instance();
 	player.add_camera(camera_path);
 	var gui = guiScene.instance();
 	# Add to World
 	add_child(gui);
 	add_child(player);
 
-func _link_signals():
-	pass
-	
-func _spawn_trees():
-	pass 
 
-func update_fruit(fruitType):
-	pass
+	
+func fruit_consumed_update(fruit):
+	if (fruit == 0):
+		player.change_speed(-40);
+		player.change_points(60);
+	elif (fruit == 1):
+		player.change_speed(-20);
+		player.change_points(40);
+	elif (fruit == 2):
+		player.change_points(15);
+		player.change_speed(30);
+	elif (fruit == 3):
+		player.change_points(20);
+	elif (fruit == 4):
+		player.change_speed(40);
+	elif (fruit == 5):
+		player.change_speed(-10);
+		player.change_points(25);
+	elif (fruit == 6):
+		player.change_points(10);
+		player.change_speed(15);
+	elif (fruit == 7):
+		player.change_speed(5);
+		player.change_points(5);
+	elif (fruit == 8):
+		player.change_points(5);
+		player.change_speed(20);
+	elif (fruit == 9):
+		player.change_points(10);
+		player.change_speed(10);
+	previousFruit = fruit;
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

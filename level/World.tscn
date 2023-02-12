@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://level/World.gd" type="Script" id=1]
-[ext_resource path="res://Gui.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8202, 10 )
@@ -45,5 +44,3 @@ shape = SubResource( 4 )
 modulate = Color( 0.988235, 0.0745098, 0.0745098, 1 )
 position = Vector2( 8183, -21 )
 shape = SubResource( 5 )
-
-[node name="GUI" parent="." instance=ExtResource( 3 )]
