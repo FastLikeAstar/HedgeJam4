@@ -12,8 +12,9 @@ var rares;
 var uncommons;
 var commons;
 var player;
-var previousFruit;
-
+var previousFruit = -1;
+var gui;
+var time_elapsed := 0.0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,17 +27,17 @@ func _ready():
 	bgTrees = [];
 	var tempX;
 	var tempY;
-	var treeSizeOffset = 512;
+	var treeSizeOffset = 768;
 	var tree;
 	var treeCount = 0;
 
 	
 
 	
-	ultraRares = 0;
-	rares = 3;
-	uncommons = 6;
-	commons = 10;
+	ultraRares = 2;
+	rares = 6;
+	uncommons = 12;
+	commons = 16;
 
 
 	var rng = RandomNumberGenerator.new();
@@ -62,9 +63,9 @@ func _ready():
 	
 	var my_random_number = rng.randf_range(0, 64.0);
 	
-	for n in range(-30, 30, 1):
+	for n in range(-7, 7, 1):
 		tempX = n * treeSizeOffset;
-		for m in range(-30, 30, 1):
+		for m in range(-7, 7, 1):
 			if (treeCount < 3):
 				tree = treeScene.instance();
 				tree.treeType = treeTypesRarity.pop_back();
@@ -86,20 +87,29 @@ func _ready():
 		for m in fruits:
 			m.connect("fruit_consumed", self, "fruit_consumed_update");
 		
+	print("trees total " + str(bgTrees.size()));
 	# Instance
 	player = playerScene.instance();
 	player.add_camera(camera_path);
-	var gui = guiScene.instance();
+	gui = guiScene.instance();
 	# Add to World
 	add_child(gui);
 	add_child(player);
+	player.connect("game_win", self, "game_won");
+	player.connect("current_points", self, "update_points");
+	player.connect("level_up", self, "update_level");
 
 
 	
 func fruit_consumed_update(fruit):
+	if (!$DoneTimer.is_stopped()):
+		$DoneTimer.stop()
+
+	
 	if (fruit == 0):
 		player.change_speed(-40);
 		player.change_points(60);
+		if 
 	elif (fruit == 1):
 		player.change_speed(-20);
 		player.change_points(40);
@@ -127,6 +137,23 @@ func fruit_consumed_update(fruit):
 		player.change_speed(10);
 	previousFruit = fruit;
 
+func game_won():
+	pass
+	
+func update_points(points, fruitLevel):
+	gui.update_points(points, fruitLevel);
+	
+func update_level(newLevel):
+	gui.new_level(newLevel);
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if $DoneTimer.is_stopped():
+		time_elapsed += delta;
+		$Hud.update_time(time_elapsed);
+	else:
+		$Hud.update_count($DoneTimer.time_left);
+
+
+func _on_DoneTimer_timeout():
+	pass # Replace with function body.
