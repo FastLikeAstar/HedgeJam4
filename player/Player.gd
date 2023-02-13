@@ -59,17 +59,20 @@ func get_input():
 	velocity = Vector2.ZERO
 	if Input.is_action_pressed('right'):
 		velocity.x += 1
-		$AnimatedSprite.set_frame(0);
+		$AnimatedSprite.animation =  "idle_right";
+
 		
 	if Input.is_action_pressed('left'):
 		velocity.x -= 1
-		$AnimatedSprite.set_frame(1);
+		$AnimatedSprite.animation =  "idle_left";
 		
 	if Input.is_action_pressed('down'):
 		velocity.y += 1
+		$AnimatedSprite.animation =  "idle_down";
 		
 	if Input.is_action_pressed('up'):
 		velocity.y -= 1
+		
 		
 	if Input.is_action_just_pressed("run_faster"):
 		$DashTimer.start(1);
