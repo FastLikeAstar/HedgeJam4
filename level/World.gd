@@ -104,37 +104,86 @@ func _ready():
 func fruit_consumed_update(fruit):
 	if (!$DoneTimer.is_stopped()):
 		$DoneTimer.stop()
-
 	
 	if (fruit == 0):
 		player.change_speed(-40);
-		player.change_points(60);
-		if 
+		player.change_points(30);
+		if (previousFruit == 1):
+			player.change_points(20);
+		if (previousFruit == 2):
+			player.change_speed(20);
+		
 	elif (fruit == 1):
 		player.change_speed(-20);
-		player.change_points(40);
-	elif (fruit == 2):
 		player.change_points(15);
-		player.change_speed(30);
+		if (previousFruit == 5):
+			player.change_points(10);
+		if (previousFruit == 6):
+			player.change_speed(20);
+			
+	elif (fruit == 2):
+		player.change_points(5);
+		player.change_speed(10);
+		if (previousFruit == 3):
+			player.change_points(10);
+		if (previousFruit == 7):
+			player.change_speed(60);
+		
 	elif (fruit == 3):
-		player.change_points(20);
+		player.change_points(5);
+		if (previousFruit == 4):
+			player.change_points(15);
+		if (previousFruit == 8):
+			player.change_speed(30);
+		
+		
 	elif (fruit == 4):
-		player.change_speed(40);
+		player.change_speed(10);
+		if (previousFruit == 2):
+			player.change_points(15);
+		if (previousFruit == 9):
+			player.change_speed(40);
+		
 	elif (fruit == 5):
 		player.change_speed(-10);
-		player.change_points(25);
+		player.change_points(10);
+		if (previousFruit == 1):
+			player.change_points(15);
+		if (previousFruit == 9):
+			player.change_speed(50);
+		
+		
 	elif (fruit == 6):
-		player.change_points(10);
-		player.change_speed(15);
+		player.change_points(5);
+		if (previousFruit == 2):
+			player.change_points(5);
+		if (previousFruit == 9):
+			player.change_speed(20);
+		
 	elif (fruit == 7):
-		player.change_speed(5);
-		player.change_points(5);
+		player.change_speed(2);
+		player.change_points(1);
+		if (previousFruit == 2):
+			player.change_points(5);
+		if (previousFruit == 9):
+			player.change_speed(20);
+		if (previousFruit == 7):
+			player.change_speed(3);
+			
 	elif (fruit == 8):
-		player.change_points(5);
-		player.change_speed(20);
+		player.change_points(8);
+		if (previousFruit == 4):
+			player.change_points(10);
+		if (previousFruit == 7):
+			player.change_speed(20);
+			
 	elif (fruit == 9):
-		player.change_points(10);
-		player.change_speed(10);
+		player.change_points(3);
+		if (previousFruit == 5):
+			player.change_points(12);
+		if (previousFruit == 8):
+			player.change_speed(30);
+			
 	previousFruit = fruit;
 
 func game_won():

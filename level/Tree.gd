@@ -20,11 +20,40 @@ func _ready():
 
 
 func create_fruits(rng):
-	var my_random_number = rng.randi_range(0, 2);
+	var my_random_number = rng.randi_range(0, 1);
 	var fruits = [];
 	var fruit;
 	var totalFruits = baseFruitSpawn + my_random_number;
-	
+	if treeType == 0:
+		my_random_number = rng.randi_range(0, 1);
+		baseFruitSpawn = 1 + my_random_number;
+	elif treeType == 1:
+		my_random_number = rng.randi_range(0, 4);
+		baseFruitSpawn = 1 + my_random_number;
+	elif treeType == 2:
+		my_random_number = rng.randi_range(0, 2);
+		baseFruitSpawn = 2 + my_random_number;
+	elif treeType == 3:
+		my_random_number = rng.randi_range(0, 2);
+		baseFruitSpawn = 2 + my_random_number;
+	elif treeType == 4:
+		my_random_number = rng.randi_range(0, 3);
+		baseFruitSpawn = 1 + my_random_number;
+	elif treeType == 5:
+		my_random_number = rng.randi_range(0, 2);
+		baseFruitSpawn = 1 + my_random_number;
+	elif treeType == 6:
+		my_random_number = rng.randi_range(0, 3);
+		baseFruitSpawn = 2 + my_random_number;
+	elif treeType == 7:
+		my_random_number = rng.randi_range(0, 10);
+		baseFruitSpawn = 5 + my_random_number;
+	elif treeType == 8:
+		my_random_number = rng.randi_range(0, 2);
+		baseFruitSpawn = 1 + my_random_number;
+	elif treeType == 9:
+		my_random_number = rng.randi_range(0, 5);
+		baseFruitSpawn = 2 + my_random_number;
 	
 	for n in totalFruits:
 		fruit = fruitToSpawn.instance();
