@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Area2D
 
 
 # Declare member variables here. Examples:
@@ -6,15 +6,17 @@ extends KinematicBody2D
 # var b = "text"
 
 
-signal consumed;
+signal fruit_consumed;
 var fruitType;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
-func _on_Player_area_entered(area):
-	emit_signal("fruit_consumed", fruitType);
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+
+
+func _on_Fruit_body_entered(body):
+	if body.is_in_group("player"):
+		emit_signal("fruit_consumed", fruitType);
+		queue_free();
