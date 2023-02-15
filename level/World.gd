@@ -18,7 +18,7 @@ var time_elapsed := 0.0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	VisualServer.set_default_clear_color(Color("#012410"));
+	VisualServer.set_default_clear_color(Color("#010d09"));
 	# Load the Resource
 	playerScene = load("res://player/Player.tscn");
 	guiScene = load("res://Gui.tscn");
