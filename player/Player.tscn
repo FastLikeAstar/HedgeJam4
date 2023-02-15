@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://oonana_idle_left.png" type="Texture" id=2]
@@ -10,6 +10,10 @@
 [ext_resource path="res://oonana_idle_down0001.png" type="Texture" id=8]
 [ext_resource path="res://oonana_idle_down0003.png" type="Texture" id=9]
 [ext_resource path="res://oonana_idle_down0000.png" type="Texture" id=10]
+[ext_resource path="res://oonana_right_moving0003.png" type="Texture" id=11]
+[ext_resource path="res://oonana_right_moving0002.png" type="Texture" id=12]
+[ext_resource path="res://oonana_right_moving0001.png" type="Texture" id=13]
+[ext_resource path="res://oonana_right_moving0000.png" type="Texture" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -38,6 +42,26 @@ flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 128, 128 )
 
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 128, 128 )
+
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), ExtResource( 9 ) ],
@@ -54,6 +78,11 @@ animations = [ {
 "loop": true,
 "name": "idle_right",
 "speed": 0.0
+}, {
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "moving_right",
+"speed": 12.0
 } ]
 
 [node name="Player" type="KinematicBody2D"]
@@ -97,8 +126,8 @@ color_ramp = ExtResource( 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
-animation = "idle_down"
-frame = 1
+animation = "moving_right"
+frame = 2
 playing = true
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
