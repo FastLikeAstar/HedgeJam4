@@ -63,6 +63,7 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 self_modulate = Color( 1, 1, 1, 0.321569 )
 texture = ExtResource( 4 )
 
@@ -97,7 +98,7 @@ color_ramp = ExtResource( 6 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
 animation = "idle_down"
-frame = 3
+frame = 1
 playing = true
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
