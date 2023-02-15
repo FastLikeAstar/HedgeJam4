@@ -81,7 +81,7 @@ func create_fruits(rng):
 		else:
 			my_random_number = rng.randi_range(64,191); # 255 - 64 & 0 +64
 			fruit.position = Vector2(my_random_number, -255);
-		fruit.fruitType = treeType;
+		fruit.assign_type(treeType);
 		fruits.append(fruit);
 	
 
