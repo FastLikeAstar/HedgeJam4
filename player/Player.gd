@@ -6,6 +6,12 @@ enum movement_state{
 	idle,
 	running
 }
+enum last_direction{
+	up,
+	down,
+	right,
+	left
+}
 
 
 # Declare member variables here. Examples:
@@ -29,6 +35,7 @@ var fruitLevel = 0;
 var fruitPointBreakPoint = 20;
 var fruitPoints = 0;
 var lowestSpeed = 200;
+var lastPressedDirection;
 
 signal level_up;
 signal current_points;
@@ -43,6 +50,7 @@ func _ready():
 	$CPUParticles2D.local_coords = false;
 	$BigDash.emitting = false;
 	$BigDash.local_coords = false;
+	lastPressedDirection = "down";
 
 func add_camera(camera_path):
 	$RemoteTransform2D.remote_path = camera_path;
@@ -58,20 +66,20 @@ func _process(delta):
 func get_input():
 	velocity = Vector2.ZERO
 	if Input.is_action_pressed('right'):
-		velocity.x += 1
-		$AnimatedSprite.animation =  "idle_right";
-
+		velocity.x += 1;
+		lastPressedDirection = "right";
 		
 	if Input.is_action_pressed('left'):
 		velocity.x -= 1
-		$AnimatedSprite.animation =  "idle_left";
+		lastPressedDirection = "left";
 		
 	if Input.is_action_pressed('down'):
-		velocity.y += 1
-		$AnimatedSprite.animation =  "idle_down";
+		velocity.y += 1;
+		lastPressedDirection = "down";
 		
 	if Input.is_action_pressed('up'):
-		velocity.y -= 1
+		velocity.y -= 1;
+		lastPressedDirection = "up";
 		
 		
 	if Input.is_action_just_pressed("run_faster"):
@@ -86,16 +94,37 @@ func get_input():
 		else:
 			$CPUParticles2D.emitting = true;
 		
-		
+	
 	# Make sure diagonal movement isn't faster
 	attemptedSpeed = baseSpeed + bonusSpeed + runBonus;
 	actualSpeed = clamp(attemptedSpeed, 0, baseSpeed+bonusSpeed);
 	velocity = velocity.normalized() * actualSpeed;
+	if (velocity.x == 0 && velocity.y == 0):
+		match lastPressedDirection:
+			"up":
+				$AnimatedSprite.animation =  "idle_down";
+			"down":
+				$AnimatedSprite.animation =  "idle_down";
+			"left":
+				$AnimatedSprite.animation =  "idle_left";
+			"right":
+				$AnimatedSprite.animation =  "idle_right";
+	elif (abs(velocity.y) >= abs(velocity.x)):
+		if (velocity.y > 0):
+			$AnimatedSprite.animation =  "moving_right";
+		else:
+			$AnimatedSprite.animation =  "idle_left";
+	else:
+		if (velocity.x > 0):
+			$AnimatedSprite.animation =  "moving_right";
+		else:
+			$AnimatedSprite.animation =  "idle_down";
+			
 
 func _physics_process(_delta):
 	get_input();
 	velocity = move_and_slide(velocity);
-
+		
 
 func change_speed(speedDelta):
 	if (bonusSpeed + baseSpeed) < lowestSpeed:
