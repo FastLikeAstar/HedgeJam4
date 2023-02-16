@@ -140,6 +140,7 @@ func change_points(deltaPoints):
 		fruitPoints -= fruitPointBreakPoint;
 		if (fruitLevel > 5):
 			emit_signal("game_win");
+			end_session();
 			print("Game Won");
 		else:
 			emit_signal("level_up", fruitLevel);
@@ -157,6 +158,9 @@ func change_points(deltaPoints):
 				$AnimatedSprite.scale = Vector2(1.8, 1.8);
 	emit_signal("current_points", fruitPoints, fruitLevel);
 
+func end_session():
+	$DeathParticles.emitting = true;
+	$AnimatedSprite.modulate = Color(0, 0, 0, 0);
 
 func _on_DashTimer_timeout():
 	runBonus -= runDecrease;
