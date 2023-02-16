@@ -21,8 +21,9 @@ func set_text(number, exploding):
 	$RichTextLabel.bbcode_text = "[rainbow freq=1 sat=0.5 val=1]"+ str(biggerNumber)+"[/rainbow]";
 	$RichTextLabel.rect_size = dynamic_font.get_string_size($RichTextLabel.bbcode_text);
 	$CPUParticles2D.amount = biggerNumber + 32;
-	$CPUParticles2D.emitting = exploding;
+
 	$CPUParticles2D.restart();
+	$CPUParticles2D.emitting = exploding;
 	$CPUParticles2D.one_shot = true;
 	#$RichTextLabel.scale(number);
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -18,10 +18,10 @@ func assign_type(type):
 	fruitType = type;
 	if (fruitType == 9):
 		$AnimatedSprite.animation =  "banana";
-		self.modulate = Color(.65,0,0);
+		self.modulate = Color(.8,0,0);
 	elif (fruitType == 8):
 		$AnimatedSprite.animation =  "mango";
-		self.modulate = Color(0.65,0,0);
+		self.modulate = Color(0.8,0,0);
 	elif (fruitType == 7):
 		$AnimatedSprite.animation =  "mango";
 		self.modulate = Color(0,0,1);
@@ -33,7 +33,7 @@ func assign_type(type):
 		self.modulate = Color(0,0,1);
 	elif (fruitType == 4):
 		$AnimatedSprite.animation =  "orange";
-		self.modulate = Color(0.65,1,1);
+		self.modulate = Color(0.8,0,0);
 	elif (fruitType == 3):
 		$AnimatedSprite.animation =  "mango";
 		self.modulate = Color(1,1,1);

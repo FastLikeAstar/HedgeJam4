@@ -14,6 +14,10 @@ config/name="Hedge Jam 4"
 run/main_scene="res://Menu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+ScoreHolder="*res://ScoreHolder.tscn"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
