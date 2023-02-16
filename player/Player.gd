@@ -111,14 +111,14 @@ func get_input():
 				$AnimatedSprite.animation =  "idle_right";
 	elif (abs(velocity.y) >= abs(velocity.x)):
 		if (velocity.y > 0):
-			$AnimatedSprite.animation =  "moving_right";
+			$AnimatedSprite.animation =  "moving_down";
 		else:
-			$AnimatedSprite.animation =  "idle_left";
+			$AnimatedSprite.animation =  "moving_down";
 	else:
 		if (velocity.x > 0):
 			$AnimatedSprite.animation =  "moving_right";
 		else:
-			$AnimatedSprite.animation =  "idle_down";
+			$AnimatedSprite.animation =  "idle_left";
 			
 
 func _physics_process(_delta):
