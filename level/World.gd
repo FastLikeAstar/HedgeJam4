@@ -17,6 +17,7 @@ var gui;
 var time_elapsed := 0.0;
 var textFeedback = load("res://feedback/FloatingText.tscn");
 var treeTypesRarity = [];
+var best_time;
 
 var bananaTexture = load("res://banana.png");
 var banana2Texture = load("res://banana2.png");
@@ -41,13 +42,14 @@ func _ready():
 	var treeCount = 0;
 	$EndScreen.visible = false;
 	var currentTreeType;
+	best_time = ScoreHolder.fastest_time;
 	
 
 	
-	ultraRares = 3;
-	rares = 7;
-	uncommons = 13;
-	commons = 17;
+	ultraRares = 1;
+	rares = 3;
+	uncommons = 4;
+	commons = 5;
 
 
 	var rng = RandomNumberGenerator.new();
@@ -60,7 +62,7 @@ func _ready():
 	for n in range(-7, 7, 1):
 		tempX = n * treeSizeOffset;
 		for m in range(-7, 7, 1):
-			if (treeCount < 4):
+			if (treeCount < 6):
 				tree = treeScene.instance();
 				currentTreeType = treeTypesRarity.pop_back();
 				if (currentTreeType == null):
@@ -102,6 +104,7 @@ func _ready():
 func fruit_consumed_update(fruit, fruitLocation):
 	var exploding = false;
 	var pointsAdded = 0;
+	var speedChange = 0;
 	if (!$DoneTimer.is_stopped()):
 		$DoneTimer.stop()
 	
@@ -110,6 +113,7 @@ func fruit_consumed_update(fruit, fruitLocation):
 		player.change_speed(-40);
 		player.change_points(30);
 		pointsAdded += 30;
+		speedChange -= 40;
 		$Hud/PointsCombo.set_texture(bananaTexture);
 		$Hud/SpeedCombo.set_texture(orangeTexture);
 		$Hud/PointsCombo.modulate = Color(1,1,1);
@@ -120,12 +124,14 @@ func fruit_consumed_update(fruit, fruitLocation):
 			exploding = true;
 		if (previousFruit == 2):
 			player.change_speed(20);
+			speedChange -= 20;
 			exploding = true;
 		
 	# Boonana
 	elif (fruit == 1):
 		player.change_speed(-20);
 		player.change_points(15);
+		speedChange -= 20;
 		pointsAdded += 15;
 		$Hud/PointsCombo.set_texture(pineappleTexture);
 		$Hud/SpeedCombo.set_texture(pineappleTexture);
@@ -137,6 +143,7 @@ func fruit_consumed_update(fruit, fruitLocation):
 			pointsAdded += 10;
 		if (previousFruit == 6):
 			player.change_speed(20);
+			speedChange += 20;
 			exploding = true;
 			
 	# Orange
@@ -144,6 +151,7 @@ func fruit_consumed_update(fruit, fruitLocation):
 		player.change_points(5);
 		player.change_speed(10);
 		pointsAdded += 5;
+		speedChange += 10;
 		$Hud/PointsCombo.set_texture(mangoTexture);
 		$Hud/SpeedCombo.set_texture(berryTexture);
 		$Hud/PointsCombo.modulate = Color(1,1,1);
@@ -154,6 +162,7 @@ func fruit_consumed_update(fruit, fruitLocation):
 			pointsAdded += 10;
 		if (previousFruit == 7):
 			player.change_speed(60);
+			speedChange += 60;
 			exploding = true;
 	
 	# Mango 2
@@ -170,11 +179,13 @@ func fruit_consumed_update(fruit, fruitLocation):
 			exploding = true;
 		if (previousFruit == 8):
 			player.change_speed(30);
+			speedChange += 30;
 			exploding = true;
 		
 	# Orange
 	elif (fruit == 4):
 		player.change_speed(10);
+		speedChange += 10;
 		$Hud/PointsCombo.set_texture(orangeTexture);
 		$Hud/SpeedCombo.set_texture(berryTexture);
 		$Hud/PointsCombo.modulate = Color(1,1,1);
@@ -185,12 +196,14 @@ func fruit_consumed_update(fruit, fruitLocation):
 			exploding = true;
 		if (previousFruit == 9):
 			player.change_speed(40);
+			speedChange += 40;
 			exploding = true;
 		
 	# Pineapple 2
 	elif (fruit == 5):
 		player.change_speed(-10);
 		player.change_points(10);
+		speedChange -= 10;
 		pointsAdded += 10;
 		$Hud/PointsCombo.set_texture(banana2Texture);
 		$Hud/SpeedCombo.set_texture(bananaTexture);
@@ -202,6 +215,7 @@ func fruit_consumed_update(fruit, fruitLocation):
 			exploding = true;
 		if (previousFruit == 9):
 			player.change_speed(50);
+			speedChange += 50;
 			exploding = true;
 		
 	#Pineapple
@@ -218,12 +232,14 @@ func fruit_consumed_update(fruit, fruitLocation):
 			exploding = true;
 		if (previousFruit == 9):
 			player.change_speed(20);
+			speedChange += 20;
 			exploding = true;
 		
 	# Raspberry
 	elif (fruit == 7):
 		player.change_speed(2);
 		player.change_points(1);
+		speedChange += 2;
 		pointsAdded += 1;
 		$Hud/PointsCombo.set_texture(orangeTexture);
 		$Hud/SpeedCombo.set_texture(bananaTexture);
@@ -235,9 +251,11 @@ func fruit_consumed_update(fruit, fruitLocation):
 			exploding = true;
 		if (previousFruit == 9):
 			player.change_speed(20);
+			speedChange += 20;
 			exploding = true;
 		if (previousFruit == 7):
 			player.change_speed(3);
+			speedChange += 3;
 			exploding = true;
 	
 	# Mango
@@ -254,6 +272,7 @@ func fruit_consumed_update(fruit, fruitLocation):
 			exploding = true;
 		if (previousFruit == 7):
 			player.change_speed(20);
+			speedChange += 20;
 			exploding = true;
 			
 	# Banana
@@ -270,13 +289,16 @@ func fruit_consumed_update(fruit, fruitLocation):
 			exploding = true;
 		if (previousFruit == 8):
 			player.change_speed(30);
+			speedChange += 30;
 			exploding = true;
 	
 	var text = textFeedback.instance();
-	text.set_text(pointsAdded, true);
+	text.set_text(pointsAdded, exploding);
 	text.position = fruitLocation;
 	add_child(text);
 	previousFruit = fruit;
+	if (speedChange > 0):
+		player.speedup_emit(speedChange);
 
 func fillTrees():
 		# Add rarities
@@ -297,7 +319,10 @@ func fillTrees():
 	print("type of trees total " + str(treeTypesRarity.size()));
 
 func game_won():
+	$EndScreen.game_won(time_elapsed, best_time);
 	$EndScreen.visible = true;
+	if (time_elapsed < best_time):
+		ScoreHolder.fastest_time = time_elapsed;
 	
 func update_points(points, fruitLevel):
 	gui.update_points(points, fruitLevel);

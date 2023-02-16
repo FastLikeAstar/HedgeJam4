@@ -23,6 +23,14 @@ func _on_PlayAgain_button_down():
 func _on_MainMenu_button_down():
 	get_tree().change_scene("res://Menu.tscn");
 
-func game_won(points, previous_highscore):
-	previous_highscore = $VBoxContainer/HBoxContainer/PreviousHighscore.text + previous_highscore;
-	previous_highscore = $VBoxContainer/HBoxContainer5/score.text + points;
+func game_won(points :float, previous_highscore:float):
+	var thisMinutes := points / 60;
+	var thisSeconds := fmod(points, 60);
+	var thisRun = "%02d:%02d" % [thisMinutes, thisSeconds];
+
+	var minutes := previous_highscore / 60;
+	var seconds := fmod(previous_highscore, 60);
+	var highscore = "%02d:%02d" % [minutes, seconds];
+
+	$VBoxContainer/HBoxContainer/PreviousHighscore.text = $VBoxContainer/HBoxContainer/PreviousHighscore.text + highscore;
+	$VBoxContainer/HBoxContainer5/Score.text = $VBoxContainer/HBoxContainer5/Score.text + thisRun;

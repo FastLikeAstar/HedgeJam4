@@ -24,7 +24,7 @@ onready var camera_position
 #var maxSpeed = 550;
 var baseSpeed = 300;  # speed in pixels/sec
 var velocity = Vector2.ZERO;
-var maxRunBonus = 100;
+var maxRunBonus = 120;
 var bonusSpeed = 0;
 var runBonus = 0;
 var actualSpeed = 0;
@@ -32,7 +32,7 @@ var currentSpeedLevel = 0;
 var attemptedSpeed = 0;
 var runDecrease = 35;
 var fruitLevel = 0;
-var fruitPointBreakPoint = 20;
+var fruitPointBreakPoint = 50;
 var fruitPoints = 0;
 var lowestSpeed = 200;
 var lastPressedDirection;
@@ -97,7 +97,7 @@ func get_input():
 	
 	# Make sure diagonal movement isn't faster
 	attemptedSpeed = baseSpeed + bonusSpeed + runBonus;
-	actualSpeed = clamp(attemptedSpeed, 0, baseSpeed+bonusSpeed);
+	actualSpeed = clamp(attemptedSpeed, lowestSpeed, baseSpeed+bonusSpeed);
 	velocity = velocity.normalized() * actualSpeed;
 	if (velocity.x == 0 && velocity.y == 0):
 		match lastPressedDirection:
@@ -111,14 +111,14 @@ func get_input():
 				$AnimatedSprite.animation =  "idle_right";
 	elif (abs(velocity.y) >= abs(velocity.x)):
 		if (velocity.y > 0):
-			$AnimatedSprite.animation =  "moving_right";
+			$AnimatedSprite.animation =  "moving_down";
 		else:
-			$AnimatedSprite.animation =  "idle_left";
+			$AnimatedSprite.animation =  "moving_down";
 	else:
 		if (velocity.x > 0):
 			$AnimatedSprite.animation =  "moving_right";
 		else:
-			$AnimatedSprite.animation =  "idle_down";
+			$AnimatedSprite.animation =  "idle_left";
 			
 
 func _physics_process(_delta):
@@ -161,6 +161,11 @@ func change_points(deltaPoints):
 func end_session():
 	$DeathParticles.emitting = true;
 	$AnimatedSprite.modulate = Color(0, 0, 0, 0);
+	
+	
+func speedup_emit(speedAmount):
+	$SpeedUpParticles.emitting = true;
+	$SpeedUpParticles.amount = speedAmount *2;
 
 func _on_DashTimer_timeout():
 	runBonus -= runDecrease;

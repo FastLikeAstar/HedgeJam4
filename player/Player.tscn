@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://oonana_idle_left.png" type="Texture" id=2]
@@ -6,32 +6,27 @@
 [ext_resource path="res://glow_placeholder.png" type="Texture" id=4]
 [ext_resource path="res://dashGradiant.tres" type="Gradient" id=5]
 [ext_resource path="res://rainbowBlockGradiant.tres" type="Gradient" id=6]
-[ext_resource path="res://oonana_idle_down0002.png" type="Texture" id=7]
-[ext_resource path="res://oonana_idle_down0001.png" type="Texture" id=8]
-[ext_resource path="res://oonana_idle_down0003.png" type="Texture" id=9]
-[ext_resource path="res://oonana_idle_down0000.png" type="Texture" id=10]
 [ext_resource path="res://oonana_right_moving0003.png" type="Texture" id=11]
 [ext_resource path="res://oonana_right_moving0002.png" type="Texture" id=12]
 [ext_resource path="res://oonana_right_moving0001.png" type="Texture" id=13]
 [ext_resource path="res://oonana_right_moving0000.png" type="Texture" id=14]
 [ext_resource path="res://banana.png" type="Texture" id=15]
+[ext_resource path="res://oonana_moving_down0003.png" type="Texture" id=16]
+[ext_resource path="res://oonana_moving_down_f0006.png" type="Texture" id=17]
+[ext_resource path="res://oonana_moving_down0005.png" type="Texture" id=18]
+[ext_resource path="res://oonana_moving_down0001.png" type="Texture" id=19]
+[ext_resource path="res://oonana_moving_down_f0004.png" type="Texture" id=20]
+[ext_resource path="res://oonana_moving_down_f0000.png" type="Texture" id=21]
+[ext_resource path="res://oonana_moving_down_f0002.png" type="Texture" id=22]
+[ext_resource path="res://oonana_moving_down_f0005.png" type="Texture" id=23]
+[ext_resource path="res://oonana_moving_down0006.png" type="Texture" id=24]
+[ext_resource path="res://oonana_moving_down_f0003.png" type="Texture" id=25]
+[ext_resource path="res://oonana_moving_down0004.png" type="Texture" id=26]
+[ext_resource path="res://oonana_moving_down0000.png" type="Texture" id=27]
+[ext_resource path="res://oonana_moving_down_f0001.png" type="Texture" id=28]
+[ext_resource path="res://oonana_moving_down0002.png" type="Texture" id=29]
 
 [sub_resource type="RectangleShape2D" id=1]
-
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 0, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 0, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
@@ -41,6 +36,21 @@ region = Rect2( 0, 0, 128, 128 )
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 27 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 28 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 29 )
 region = Rect2( 0, 0, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=8]
@@ -65,7 +75,7 @@ region = Rect2( 0, 0, 128, 128 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 27 ), ExtResource( 19 ), ExtResource( 29 ), ExtResource( 16 ), ExtResource( 26 ), ExtResource( 18 ), ExtResource( 24 ) ],
 "loop": true,
 "name": "idle_down",
 "speed": 9.0
@@ -79,6 +89,11 @@ animations = [ {
 "loop": true,
 "name": "idle_right",
 "speed": 0.0
+}, {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 19 ), ExtResource( 22 ), ExtResource( 16 ), ExtResource( 20 ), ExtResource( 18 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "moving_down",
+"speed": 6.0
 }, {
 "frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
@@ -127,8 +142,8 @@ color_ramp = ExtResource( 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
-animation = "moving_right"
-frame = 3
+animation = "moving_down"
+frame = 11
 playing = true
 
 [node name="DeathParticles" type="CPUParticles2D" parent="."]
@@ -151,6 +166,16 @@ angle_random = 1.0
 scale_amount_random = 0.31
 color_initial_ramp = ExtResource( 6 )
 hue_variation = 1.0
+
+[node name="SpeedUpParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.7
+one_shot = true
+speed_scale = 2.18
+emission_shape = 2
+emission_rect_extents = Vector2( 48, 48 )
+gravity = Vector2( 0, -98 )
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
 [connection signal="timeout" from="DashFeedback" to="." method="_on_DashFeedback_timeout"]
