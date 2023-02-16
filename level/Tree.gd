@@ -30,39 +30,39 @@ func create_fruits(rng):
 		$CPUParticles2D.amount = 30;
 	elif treeType == 1:
 		my_random_number = rng.randi_range(0, 4);
-		baseFruitSpawn = 1 + my_random_number;
+		baseFruitSpawn = 2 + my_random_number;
 		$CPUParticles2D.amount = 24;
 	elif treeType == 2:
 		my_random_number = rng.randi_range(0, 2);
-		baseFruitSpawn = 2 + my_random_number;
+		baseFruitSpawn = 3 + my_random_number;
 		$CPUParticles2D.amount = 24;
 	elif treeType == 3:
 		my_random_number = rng.randi_range(0, 2);
-		baseFruitSpawn = 2 + my_random_number;
+		baseFruitSpawn = 3 + my_random_number;
 		$CPUParticles2D.amount = 18;
 	elif treeType == 4:
 		my_random_number = rng.randi_range(0, 3);
-		baseFruitSpawn = 1 + my_random_number;
+		baseFruitSpawn = 2 + my_random_number;
 		$CPUParticles2D.amount = 18;
 	elif treeType == 5:
 		my_random_number = rng.randi_range(0, 2);
-		baseFruitSpawn = 1 + my_random_number;
+		baseFruitSpawn = 2 + my_random_number;
 		$CPUParticles2D.amount = 18;
 	elif treeType == 6:
 		my_random_number = rng.randi_range(0, 3);
-		baseFruitSpawn = 2 + my_random_number;
+		baseFruitSpawn = 3 + my_random_number;
 		$CPUParticles2D.amount = 12;
 	elif treeType == 7:
 		my_random_number = rng.randi_range(0, 10);
-		baseFruitSpawn = 5 + my_random_number;
+		baseFruitSpawn = 6 + my_random_number;
 		$CPUParticles2D.amount = 12;
 	elif treeType == 8:
 		my_random_number = rng.randi_range(0, 2);
-		baseFruitSpawn = 1 + my_random_number;
+		baseFruitSpawn = 2 + my_random_number;
 		$CPUParticles2D.amount = 12;
 	elif treeType == 9:
 		my_random_number = rng.randi_range(0, 5);
-		baseFruitSpawn = 2 + my_random_number;
+		baseFruitSpawn = 3 + my_random_number;
 		$CPUParticles2D.amount = 12;
 	
 	for n in totalFruits:

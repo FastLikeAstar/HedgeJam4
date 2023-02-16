@@ -128,7 +128,7 @@ color_ramp = ExtResource( 6 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
 animation = "moving_right"
-frame = 3
+frame = 2
 playing = true
 
 [node name="DeathParticles" type="CPUParticles2D" parent="."]
@@ -151,6 +151,16 @@ angle_random = 1.0
 scale_amount_random = 0.31
 color_initial_ramp = ExtResource( 6 )
 hue_variation = 1.0
+
+[node name="SpeedUpParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.7
+one_shot = true
+speed_scale = 2.18
+emission_shape = 2
+emission_rect_extents = Vector2( 48, 48 )
+gravity = Vector2( 0, -98 )
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
 [connection signal="timeout" from="DashFeedback" to="." method="_on_DashFeedback_timeout"]
