@@ -44,3 +44,9 @@ margin_top = 6.0
 margin_right = 357.0
 margin_bottom = 20.0
 align = 1
+
+[node name="PointsCombo" type="Sprite" parent="."]
+position = Vector2( 60, 482 )
+
+[node name="SpeedCombo" type="Sprite" parent="."]
+position = Vector2( 60, 550 )

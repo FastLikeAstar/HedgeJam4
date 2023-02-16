@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://level/World.gd" type="Script" id=1]
 [ext_resource path="res://Gui.tscn" type="PackedScene" id=2]
+[ext_resource path="res://menus/GameOver.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Environment" id=6]
 background_mode = 4
@@ -37,35 +38,37 @@ environment = SubResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-limit_left = -8192
-limit_top = -8192
-limit_right = 8192
-limit_bottom = 8192
+limit_left = -5376
+limit_top = -5376
+limit_right = 5376
+limit_bottom = 5376
 editor_draw_limits = true
 
 [node name="GameLimits" type="StaticBody2D" parent="."]
 
 [node name="BottomLine" type="CollisionShape2D" parent="GameLimits"]
-position = Vector2( 0, 8192 )
+position = Vector2( 0, 5376 )
 shape = SubResource( 2 )
 
 [node name="TopLine" type="CollisionShape2D" parent="GameLimits"]
-position = Vector2( -60, -8185.5 )
+position = Vector2( -60, -5376 )
 shape = SubResource( 3 )
 
 [node name="LeftLine" type="CollisionShape2D" parent="GameLimits"]
 modulate = Color( 0.988235, 0.0745098, 0.0745098, 1 )
-position = Vector2( -8164.5, 28.5 )
+position = Vector2( -5376, 28.5 )
 shape = SubResource( 4 )
 
 [node name="RightLine" type="CollisionShape2D" parent="GameLimits"]
 modulate = Color( 0.988235, 0.0745098, 0.0745098, 1 )
-position = Vector2( 8183, -21 )
+position = Vector2( 5376, -21 )
 shape = SubResource( 5 )
 
 [node name="DoneTimer" type="Timer" parent="."]
 wait_time = 30.2
 one_shot = true
 autostart = true
+
+[node name="EndScreen" parent="." instance=ExtResource( 3 )]
 
 [connection signal="timeout" from="DoneTimer" to="." method="_on_DoneTimer_timeout"]

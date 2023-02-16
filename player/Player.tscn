@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://oonana_idle_left.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://oonana_right_moving0002.png" type="Texture" id=12]
 [ext_resource path="res://oonana_right_moving0001.png" type="Texture" id=13]
 [ext_resource path="res://oonana_right_moving0000.png" type="Texture" id=14]
+[ext_resource path="res://banana.png" type="Texture" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -127,8 +128,29 @@ color_ramp = ExtResource( 6 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
 animation = "moving_right"
-frame = 2
+frame = 3
 playing = true
+
+[node name="DeathParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 500
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.75
+texture = ExtResource( 15 )
+emission_shape = 2
+emission_rect_extents = Vector2( 32, 32 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 2 )
+initial_velocity = 211.74
+initial_velocity_random = 0.85
+damping = 50.0
+angle_random = 1.0
+scale_amount_random = 0.31
+color_initial_ramp = ExtResource( 6 )
+hue_variation = 1.0
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
 [connection signal="timeout" from="DashFeedback" to="." method="_on_DashFeedback_timeout"]
