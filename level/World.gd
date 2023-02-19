@@ -19,15 +19,16 @@ var textFeedback = load("res://feedback/FloatingText.tscn");
 var treeTypesRarity = [];
 var best_time;
 
-var bananaTexture = load("res://banana.png");
-var banana2Texture = load("res://banana2.png");
-var mangoTexture = load("res://mango.png");
-var orangeTexture = load("res://orange.png");
-var berryTexture = load("res://banana2.png");
-var pineappleTexture = load("res://banana2.png");
+var bananaTexture = load("res://art/banana.png");
+var banana2Texture = load("res://art/banana2.png");
+var mangoTexture = load("res://art/mango.png");
+var orangeTexture = load("res://art/orange.png");
+var berryTexture = load("res://art/berry.png");
+var pineappleTexture = load("res://art/pineapple.png");
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	AudioManager.play_music("gameplay");
 	VisualServer.set_default_clear_color(Color("#04000f"));
 	# Load the Resource
 	playerScene = load("res://player/Player.tscn");
@@ -37,7 +38,7 @@ func _ready():
 	bgTrees = [];
 	var tempX;
 	var tempY;
-	var treeSizeOffset = 768;
+	var treeSizeOffset = 640;
 	var tree;
 	var treeCount = 0;
 	$EndScreen.visible = false;
@@ -110,6 +111,7 @@ func fruit_consumed_update(fruit, fruitLocation):
 	
 	# True boonana
 	if (fruit == 0):
+		AudioManager.play_fx("big_chomp");
 		player.change_speed(-40);
 		player.change_points(30);
 		pointsAdded += 30;
@@ -129,6 +131,7 @@ func fruit_consumed_update(fruit, fruitLocation):
 		
 	# Boonana
 	elif (fruit == 1):
+		AudioManager.play_fx("big_chomp");
 		player.change_speed(-20);
 		player.change_points(15);
 		speedChange -= 20;
@@ -136,7 +139,7 @@ func fruit_consumed_update(fruit, fruitLocation):
 		$Hud/PointsCombo.set_texture(pineappleTexture);
 		$Hud/SpeedCombo.set_texture(pineappleTexture);
 		$Hud/PointsCombo.modulate = Color(1,1,1);
-		$Hud/SpeedCombo.modulate = Color(1,0,0);
+		$Hud/SpeedCombo.modulate = Color(1,1,1);
 		if (previousFruit == 5):
 			player.change_points(10);
 			exploding = true;
@@ -148,6 +151,7 @@ func fruit_consumed_update(fruit, fruitLocation):
 			
 	# Orange
 	elif (fruit == 2):
+		AudioManager.play_fx("big_chomp");
 		player.change_points(5);
 		player.change_speed(10);
 		pointsAdded += 5;
@@ -167,12 +171,13 @@ func fruit_consumed_update(fruit, fruitLocation):
 	
 	# Mango 2
 	elif (fruit == 3):
+		AudioManager.play_fx("big_chomp");
 		player.change_points(5);
 		pointsAdded += 5;
 		$Hud/PointsCombo.set_texture(orangeTexture);
 		$Hud/SpeedCombo.set_texture(mangoTexture);
-		$Hud/PointsCombo.modulate = Color(1,0,0);
-		$Hud/SpeedCombo.modulate = Color(1,0,0);
+		$Hud/PointsCombo.modulate = Color(1,1,1);
+		$Hud/SpeedCombo.modulate = Color(1,1,1);
 		if (previousFruit == 4):
 			player.change_points(15);
 			pointsAdded += 15;
@@ -184,12 +189,13 @@ func fruit_consumed_update(fruit, fruitLocation):
 		
 	# Orange
 	elif (fruit == 4):
+		AudioManager.play_fx("medium_chomp");
 		player.change_speed(10);
 		speedChange += 10;
 		$Hud/PointsCombo.set_texture(orangeTexture);
 		$Hud/SpeedCombo.set_texture(berryTexture);
 		$Hud/PointsCombo.modulate = Color(1,1,1);
-		$Hud/SpeedCombo.modulate = Color(1,0,0);
+		$Hud/SpeedCombo.modulate = Color(1,1,1);
 		if (previousFruit == 2):
 			player.change_points(15);
 			pointsAdded += 15;
@@ -201,6 +207,7 @@ func fruit_consumed_update(fruit, fruitLocation):
 		
 	# Pineapple 2
 	elif (fruit == 5):
+		AudioManager.play_fx("big_chomp");
 		player.change_speed(-10);
 		player.change_points(10);
 		speedChange -= 10;
@@ -208,7 +215,7 @@ func fruit_consumed_update(fruit, fruitLocation):
 		$Hud/PointsCombo.set_texture(banana2Texture);
 		$Hud/SpeedCombo.set_texture(bananaTexture);
 		$Hud/PointsCombo.modulate = Color(1,1,1);
-		$Hud/SpeedCombo.modulate = Color(1,0,0);
+		$Hud/SpeedCombo.modulate = Color(1,1,1);
 		if (previousFruit == 1):
 			player.change_points(15);
 			pointsAdded += 15;
@@ -220,12 +227,13 @@ func fruit_consumed_update(fruit, fruitLocation):
 		
 	#Pineapple
 	elif (fruit == 6):
+		AudioManager.play_fx("big_chomp");
 		player.change_points(5);
 		pointsAdded += 5;
 		$Hud/PointsCombo.set_texture(orangeTexture);
 		$Hud/SpeedCombo.set_texture(bananaTexture);
 		$Hud/PointsCombo.modulate = Color(1,1,1);
-		$Hud/SpeedCombo.modulate = Color(1,0,0);
+		$Hud/SpeedCombo.modulate = Color(1,1,1);
 		if (previousFruit == 2):
 			player.change_points(10);
 			pointsAdded += 10;
@@ -237,6 +245,7 @@ func fruit_consumed_update(fruit, fruitLocation):
 		
 	# Raspberry
 	elif (fruit == 7):
+		AudioManager.play_fx("small_chomp");
 		player.change_speed(2);
 		player.change_points(1);
 		speedChange += 2;
@@ -244,7 +253,7 @@ func fruit_consumed_update(fruit, fruitLocation):
 		$Hud/PointsCombo.set_texture(orangeTexture);
 		$Hud/SpeedCombo.set_texture(bananaTexture);
 		$Hud/PointsCombo.modulate = Color(1,1,1);
-		$Hud/SpeedCombo.modulate = Color(1,0,0);
+		$Hud/SpeedCombo.modulate = Color(1,1,1);
 		if (previousFruit == 2):
 			player.change_points(5);
 			pointsAdded += 5;
@@ -260,11 +269,12 @@ func fruit_consumed_update(fruit, fruitLocation):
 	
 	# Mango
 	elif (fruit == 8):
+		AudioManager.play_fx("medium_chomp");
 		player.change_points(8);
 		pointsAdded += 8;
 		$Hud/PointsCombo.set_texture(orangeTexture);
 		$Hud/SpeedCombo.set_texture(berryTexture);
-		$Hud/PointsCombo.modulate = Color(1,0,0);
+		$Hud/PointsCombo.modulate = Color(1,1,1);
 		$Hud/SpeedCombo.modulate = Color(1,1,1);
 		if (previousFruit == 4):
 			player.change_points(10);
@@ -277,12 +287,13 @@ func fruit_consumed_update(fruit, fruitLocation):
 			
 	# Banana
 	elif (fruit == 9):
+		AudioManager.play_fx("medium_chomp");
 		player.change_points(3);
 		pointsAdded += 3;
 		$Hud/PointsCombo.set_texture(pineappleTexture);
 		$Hud/SpeedCombo.set_texture(mangoTexture);
 		$Hud/PointsCombo.modulate = Color(1,1,1);
-		$Hud/SpeedCombo.modulate = Color(1,0,0);
+		$Hud/SpeedCombo.modulate = Color(1,1,1);
 		if (previousFruit == 5):
 			player.change_points(12);
 			pointsAdded += 12;
@@ -310,11 +321,12 @@ func fillTrees():
 	for n in uncommons:
 		treeTypesRarity.append(3); # 1 is the type that is rare
 		treeTypesRarity.append(4); # 2 is another rare type
-	for n in commons:
 		treeTypesRarity.append(5); # 1 is the type that is rare
+	for n in commons:
 		treeTypesRarity.append(6); # 2 is another rare type
 		treeTypesRarity.append(7); # 2 is another rare type
 		treeTypesRarity.append(8); # 2 is another rare type
+		treeTypesRarity.append(9); # 2 is another rare type
 	treeTypesRarity.shuffle();
 	print("type of trees total " + str(treeTypesRarity.size()));
 

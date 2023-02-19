@@ -58,7 +58,7 @@ func add_camera(camera_path):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+		pass
 	#var particleAmount = runBonus + 10;
 	#print(str(particleAmount));
 	#$CPUParticles2D.set_amount(particleAmount);
@@ -124,7 +124,11 @@ func get_input():
 func _physics_process(_delta):
 	get_input();
 	velocity = move_and_slide(velocity);
-		
+	if (velocity.y != 0 || velocity.x !=0):
+		AudioManager.player_walking(fruitLevel);
+	else:
+		AudioManager.player_idle();
+
 
 func change_speed(speedDelta):
 	if (bonusSpeed + baseSpeed) < lowestSpeed:
@@ -149,11 +153,13 @@ func change_points(deltaPoints):
 				print("Level 1");
 			elif (fruitLevel == 2):
 				$AnimatedSprite.scale = Vector2(1.2, 1.2);
+				AudioManager.player_idle();
 				print("Level 2");
 			elif (fruitLevel == 3):
 				$AnimatedSprite.scale = Vector2(1.4, 1.4);
 				print("Level 3");
 			elif (fruitLevel == 4):
+				AudioManager.player_idle();
 				print("Level 4");
 				$AnimatedSprite.scale = Vector2(1.8, 1.8);
 	emit_signal("current_points", fruitPoints, fruitLevel);

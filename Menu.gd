@@ -9,6 +9,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	VisualServer.set_default_clear_color(Color("#04000f"));
+	AudioManager.play_music("menu");
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

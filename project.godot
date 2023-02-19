@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 ScoreHolder="*res://ScoreHolder.tscn"
+AudioManager="*res://audio/AudioManager.tscn"
 
 [gui]
 

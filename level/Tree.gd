@@ -8,9 +8,11 @@ var treeType;
 var fruitToSpawn;
 var baseFruitSpawn = 1;
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	fruitToSpawn = load("res://Fruit.tscn") # Replace with function body.
+	fruitToSpawn = load("res://Fruit.tscn"); # Replace with function body.
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,42 +30,52 @@ func create_fruits(rng):
 		my_random_number = rng.randi_range(0, 1);
 		baseFruitSpawn = 1 + my_random_number;
 		$CPUParticles2D.amount = 30;
+		$AnimatedSprite.frame = 4;
 	elif treeType == 1:
 		my_random_number = rng.randi_range(0, 4);
 		baseFruitSpawn = 2 + my_random_number;
 		$CPUParticles2D.amount = 24;
+		$AnimatedSprite.frame = 4;
 	elif treeType == 2:
 		my_random_number = rng.randi_range(0, 2);
 		baseFruitSpawn = 3 + my_random_number;
 		$CPUParticles2D.amount = 24;
+		$AnimatedSprite.frame = 3;
 	elif treeType == 3:
 		my_random_number = rng.randi_range(0, 2);
 		baseFruitSpawn = 3 + my_random_number;
 		$CPUParticles2D.amount = 18;
+		$AnimatedSprite.frame = 0;
 	elif treeType == 4:
 		my_random_number = rng.randi_range(0, 3);
 		baseFruitSpawn = 2 + my_random_number;
 		$CPUParticles2D.amount = 18;
+		$AnimatedSprite.frame = 3;
 	elif treeType == 5:
 		my_random_number = rng.randi_range(0, 2);
 		baseFruitSpawn = 2 + my_random_number;
 		$CPUParticles2D.amount = 18;
+		$AnimatedSprite.frame = 2;
 	elif treeType == 6:
 		my_random_number = rng.randi_range(0, 3);
 		baseFruitSpawn = 3 + my_random_number;
 		$CPUParticles2D.amount = 12;
+		$AnimatedSprite.frame = 2;
 	elif treeType == 7:
 		my_random_number = rng.randi_range(0, 10);
 		baseFruitSpawn = 6 + my_random_number;
 		$CPUParticles2D.amount = 12;
+		$AnimatedSprite.frame = 0;
 	elif treeType == 8:
 		my_random_number = rng.randi_range(0, 2);
 		baseFruitSpawn = 2 + my_random_number;
 		$CPUParticles2D.amount = 12;
+		$AnimatedSprite.frame = 1;
 	elif treeType == 9:
 		my_random_number = rng.randi_range(0, 5);
 		baseFruitSpawn = 3 + my_random_number;
 		$CPUParticles2D.amount = 12;
+		$AnimatedSprite.frame = 1;
 	
 	for n in totalFruits:
 		fruit = fruitToSpawn.instance();
