@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://level/World.gd" type="Script" id=1]
 [ext_resource path="res://Gui.tscn" type="PackedScene" id=2]
 [ext_resource path="res://menus/GameOver.tscn" type="PackedScene" id=3]
+[ext_resource path="res://audio/SoundTrackMain.mp3" type="AudioStream" id=4]
 
 [sub_resource type="Environment" id=6]
 background_mode = 4
@@ -70,5 +71,12 @@ one_shot = true
 autostart = true
 
 [node name="EndScreen" parent="." instance=ExtResource( 3 )]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+bus = "Music"
+
+[node name="SoundEffects" type="AudioStreamPlayer" parent="."]
 
 [connection signal="timeout" from="DoneTimer" to="." method="_on_DoneTimer_timeout"]

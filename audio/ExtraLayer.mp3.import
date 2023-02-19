@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ExtraLayer.mp3-e1ced9535b7f131cd748e3801dac6dcb.mp3str"
+
+[deps]
+
+source_file="res://audio/ExtraLayer.mp3"
+dest_files=[ "res://.import/ExtraLayer.mp3-e1ced9535b7f131cd748e3801dac6dcb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

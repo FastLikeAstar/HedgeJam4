@@ -11,12 +11,13 @@ config_version=4
 [application]
 
 config/name="Hedge Jam 4"
-run/main_scene="res://Menu.tscn"
+run/main_scene="res://menus/Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 ScoreHolder="*res://ScoreHolder.tscn"
+AudioManager="*res://audio/AudioManager.tscn"
 
 [gui]
 
