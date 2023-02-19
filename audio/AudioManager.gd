@@ -55,3 +55,15 @@ func player_idle():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func player_levelup():
+	$LevelUp.play();
+	
+func player_speedup():
+	$SpeedUp.play();
+
+func play_hover():
+	$Hover.play();
+	
+func play_click():
+	$OnClick.play();
+	

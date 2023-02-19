@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://audio/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://audio/kyle_wood_on_pad_fast_tapping.wav" type="AudioStream" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://audio/kyle_biting_carrot2.wav" type="AudioStream" id=5]
 [ext_resource path="res://audio/kyle_biting_carrot1.wav" type="AudioStream" id=6]
 [ext_resource path="res://audio/kyle_fingers_on_pad_fast_tapping.wav" type="AudioStream" id=7]
+[ext_resource path="res://audio/kyle_mouth_bubble_pop.wav" type="AudioStream" id=8]
+[ext_resource path="res://audio/kyle_tongue_click_low.wav" type="AudioStream" id=9]
+[ext_resource path="res://audio/kyle_mouth_raindrop.wav" type="AudioStream" id=10]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource( 1 )
@@ -27,7 +30,7 @@ bus = "Effects"
 
 [node name="Steps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = 5.0
+volume_db = 8.0
 bus = "Movement"
 
 [node name="BigChomp" type="AudioStreamPlayer" parent="."]
@@ -42,10 +45,25 @@ bus = "Effects"
 
 [node name="BiggerSteps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
-volume_db = 5.0
+volume_db = -5.487
+pitch_scale = 1.2
 bus = "Movement"
 
 [node name="GiantSteps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = 5.0
+volume_db = 8.0
+pitch_scale = 1.3
 bus = "Movement"
+
+[node name="SpeedUp" type="AudioStreamPlayer" parent="."]
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+bus = "Effects"
+
+[node name="OnClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+bus = "Effects"
+
+[node name="LevelUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )

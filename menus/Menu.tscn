@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Menu.gd" type="Script" id=1]
-[ext_resource path="res://audio/MenuSoundTrack.mp3" type="AudioStream" id=2]
+[ext_resource path="res://menus/AudioMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://menus/Menu.gd" type="Script" id=3]
+[ext_resource path="res://audio/MenuSoundTrack.mp3" type="AudioStream" id=4]
+[ext_resource path="res://feedback/ButtonJuice.gd" type="Script" id=5]
+[ext_resource path="res://new_dynamicfont.tres" type="DynamicFont" id=6]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
@@ -22,10 +25,12 @@ margin_bottom = 640.0
 alignment = 1
 
 [node name="Start" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 286.0
+margin_top = 278.0
 margin_right = 87.0
 margin_bottom = 306.0
+custom_fonts/font = ExtResource( 6 )
 text = "Start"
+script = ExtResource( 5 )
 
 [node name="High Scores" type="Button" parent="HBoxContainer/VBoxContainer"]
 margin_top = 310.0
@@ -36,12 +41,17 @@ text = "High Scores"
 [node name="Options" type="Button" parent="HBoxContainer/VBoxContainer"]
 margin_top = 334.0
 margin_right = 87.0
-margin_bottom = 354.0
+margin_bottom = 362.0
+custom_fonts/font = ExtResource( 6 )
 text = "Options"
+script = ExtResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
+stream = ExtResource( 4 )
 autoplay = true
 bus = "Music"
 
+[node name="AudioSettings" parent="." instance=ExtResource( 2 )]
+
 [connection signal="button_down" from="HBoxContainer/VBoxContainer/Start" to="." method="_on_Start_button_down"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]

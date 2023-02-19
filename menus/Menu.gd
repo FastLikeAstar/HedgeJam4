@@ -12,6 +12,7 @@ func _ready():
 	AudioManager.play_music("menu");
 
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -19,5 +20,13 @@ func _ready():
 
 func _on_Start_button_down():
 	get_tree().change_scene("res://level/World.tscn");
-	
+
+
+
+
+
+
+
+func _on_Options_pressed():
+	$AudioSettings.show();
 
