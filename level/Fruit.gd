@@ -51,3 +51,7 @@ func _on_Fruit_body_entered(body):
 	if body.is_in_group("player"):
 		emit_signal("fruit_consumed", fruitType, location);
 		queue_free();
+		
+	
+
+

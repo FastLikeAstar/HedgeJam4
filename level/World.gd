@@ -32,7 +32,7 @@ func _ready():
 	VisualServer.set_default_clear_color(Color("#04000f"));
 	# Load the Resource
 	playerScene = load("res://player/Player.tscn");
-	guiScene = load("res://Gui.tscn");
+	guiScene = load("res://level/Gui.tscn");
 	var treeScene = load("res://level/Tree.tscn");
 	var camera_path = $Camera2D.get_path();
 	bgTrees = [];
@@ -118,9 +118,8 @@ func fruit_consumed_update(fruit, fruitLocation):
 		speedChange -= 40;
 		$Hud/PointsCombo.set_texture(bananaTexture);
 		$Hud/SpeedCombo.set_texture(orangeTexture);
-		$Hud/PointsCombo.modulate = Color(1,1,1);
-		$Hud/SpeedCombo.modulate = Color(1,1,1);
 		if (previousFruit == 1):
+			$Hud/BgButton/CPUParticles2D.emitting = true;
 			player.change_points(20);
 			pointsAdded += 20;
 			exploding = true;
@@ -128,6 +127,7 @@ func fruit_consumed_update(fruit, fruitLocation):
 			player.change_speed(20);
 			speedChange -= 20;
 			exploding = true;
+			$Hud/BgButton2/CPUParticles2D.emitting = true;
 		
 	# Boonana
 	elif (fruit == 1):
@@ -138,16 +138,16 @@ func fruit_consumed_update(fruit, fruitLocation):
 		pointsAdded += 15;
 		$Hud/PointsCombo.set_texture(pineappleTexture);
 		$Hud/SpeedCombo.set_texture(pineappleTexture);
-		$Hud/PointsCombo.modulate = Color(1,1,1);
-		$Hud/SpeedCombo.modulate = Color(1,1,1);
 		if (previousFruit == 5):
 			player.change_points(10);
 			exploding = true;
 			pointsAdded += 10;
+			$Hud/BgButton/CPUParticles2D.emitting = true;
 		if (previousFruit == 6):
 			player.change_speed(20);
 			speedChange += 20;
 			exploding = true;
+			$Hud/BgButton2/CPUParticles2D.emitting = true;
 			
 	# Orange
 	elif (fruit == 2):
@@ -158,16 +158,16 @@ func fruit_consumed_update(fruit, fruitLocation):
 		speedChange += 10;
 		$Hud/PointsCombo.set_texture(mangoTexture);
 		$Hud/SpeedCombo.set_texture(berryTexture);
-		$Hud/PointsCombo.modulate = Color(1,1,1);
-		$Hud/SpeedCombo.modulate = Color(1,1,1);
 		if (previousFruit == 3):
 			player.change_points(10);
 			exploding = true;
 			pointsAdded += 10;
+			$Hud/BgButton/CPUParticles2D.emitting = true;
 		if (previousFruit == 7):
-			player.change_speed(60);
-			speedChange += 60;
+			player.change_speed(40);
+			speedChange += 40;
 			exploding = true;
+			$Hud/BgButton2/CPUParticles2D.emitting = true;
 	
 	# Mango 2
 	elif (fruit == 3):
@@ -176,16 +176,16 @@ func fruit_consumed_update(fruit, fruitLocation):
 		pointsAdded += 5;
 		$Hud/PointsCombo.set_texture(orangeTexture);
 		$Hud/SpeedCombo.set_texture(mangoTexture);
-		$Hud/PointsCombo.modulate = Color(1,1,1);
-		$Hud/SpeedCombo.modulate = Color(1,1,1);
 		if (previousFruit == 4):
 			player.change_points(15);
 			pointsAdded += 15;
 			exploding = true;
+			$Hud/BgButton/CPUParticles2D.emitting = true;
 		if (previousFruit == 8):
-			player.change_speed(30);
-			speedChange += 30;
+			player.change_speed(20);
+			speedChange += 20;
 			exploding = true;
+			$Hud/BgButton2/CPUParticles2D.emitting = true;
 		
 	# Orange
 	elif (fruit == 4):
@@ -194,16 +194,16 @@ func fruit_consumed_update(fruit, fruitLocation):
 		speedChange += 10;
 		$Hud/PointsCombo.set_texture(orangeTexture);
 		$Hud/SpeedCombo.set_texture(berryTexture);
-		$Hud/PointsCombo.modulate = Color(1,1,1);
-		$Hud/SpeedCombo.modulate = Color(1,1,1);
 		if (previousFruit == 2):
-			player.change_points(15);
-			pointsAdded += 15;
+			player.change_points(10);
+			pointsAdded += 10;
 			exploding = true;
+			$Hud/BgButton/CPUParticles2D.emitting = true;
 		if (previousFruit == 9):
-			player.change_speed(40);
-			speedChange += 40;
+			player.change_speed(30);
+			speedChange += 30;
 			exploding = true;
+			$Hud/BgButton2/CPUParticles2D.emitting = true;
 		
 	# Pineapple 2
 	elif (fruit == 5):
@@ -214,16 +214,16 @@ func fruit_consumed_update(fruit, fruitLocation):
 		pointsAdded += 10;
 		$Hud/PointsCombo.set_texture(banana2Texture);
 		$Hud/SpeedCombo.set_texture(bananaTexture);
-		$Hud/PointsCombo.modulate = Color(1,1,1);
-		$Hud/SpeedCombo.modulate = Color(1,1,1);
 		if (previousFruit == 1):
-			player.change_points(15);
-			pointsAdded += 15;
+			player.change_points(8);
+			pointsAdded += 8;
 			exploding = true;
+			$Hud/BgButton/CPUParticles2D.emitting = true;
 		if (previousFruit == 9):
-			player.change_speed(50);
-			speedChange += 50;
+			player.change_speed(25);
+			speedChange += 25;
 			exploding = true;
+			$Hud/BgButton2/CPUParticles2D.emitting = true;
 		
 	#Pineapple
 	elif (fruit == 6):
@@ -232,16 +232,16 @@ func fruit_consumed_update(fruit, fruitLocation):
 		pointsAdded += 5;
 		$Hud/PointsCombo.set_texture(orangeTexture);
 		$Hud/SpeedCombo.set_texture(bananaTexture);
-		$Hud/PointsCombo.modulate = Color(1,1,1);
-		$Hud/SpeedCombo.modulate = Color(1,1,1);
 		if (previousFruit == 2):
-			player.change_points(10);
-			pointsAdded += 10;
+			player.change_points(5);
+			pointsAdded += 5;
 			exploding = true;
+			$Hud/BgButton/CPUParticles2D.emitting = true;
 		if (previousFruit == 9):
-			player.change_speed(20);
-			speedChange += 20;
+			player.change_speed(10);
+			speedChange += 10;
 			exploding = true;
+			$Hud/BgButton2/CPUParticles2D.emitting = true;
 		
 	# Raspberry
 	elif (fruit == 7):
@@ -252,38 +252,38 @@ func fruit_consumed_update(fruit, fruitLocation):
 		pointsAdded += 1;
 		$Hud/PointsCombo.set_texture(orangeTexture);
 		$Hud/SpeedCombo.set_texture(bananaTexture);
-		$Hud/PointsCombo.modulate = Color(1,1,1);
-		$Hud/SpeedCombo.modulate = Color(1,1,1);
 		if (previousFruit == 2):
 			player.change_points(5);
 			pointsAdded += 5;
 			exploding = true;
+			$Hud/BgButton/CPUParticles2D.emitting = true;
 		if (previousFruit == 9):
-			player.change_speed(20);
-			speedChange += 20;
+			player.change_speed(10);
+			speedChange += 10;
 			exploding = true;
 		if (previousFruit == 7):
 			player.change_speed(3);
 			speedChange += 3;
 			exploding = true;
+			$Hud/BgButton2/CPUParticles2D.emitting = true;
 	
 	# Mango
 	elif (fruit == 8):
 		AudioManager.play_fx("medium_chomp");
-		player.change_points(8);
-		pointsAdded += 8;
+		player.change_points(4);
+		pointsAdded += 4;
 		$Hud/PointsCombo.set_texture(orangeTexture);
 		$Hud/SpeedCombo.set_texture(berryTexture);
-		$Hud/PointsCombo.modulate = Color(1,1,1);
-		$Hud/SpeedCombo.modulate = Color(1,1,1);
 		if (previousFruit == 4):
-			player.change_points(10);
-			pointsAdded += 10;
+			player.change_points(5);
+			pointsAdded += 5;
 			exploding = true;
+			$Hud/BgButton/CPUParticles2D.emitting = true;
 		if (previousFruit == 7):
-			player.change_speed(20);
-			speedChange += 20;
+			player.change_speed(10);
+			speedChange += 10;
 			exploding = true;
+			$Hud/BgButton2/CPUParticles2D.emitting = true;
 			
 	# Banana
 	elif (fruit == 9):
@@ -292,16 +292,16 @@ func fruit_consumed_update(fruit, fruitLocation):
 		pointsAdded += 3;
 		$Hud/PointsCombo.set_texture(pineappleTexture);
 		$Hud/SpeedCombo.set_texture(mangoTexture);
-		$Hud/PointsCombo.modulate = Color(1,1,1);
-		$Hud/SpeedCombo.modulate = Color(1,1,1);
 		if (previousFruit == 5):
-			player.change_points(12);
-			pointsAdded += 12;
+			player.change_points(6);
+			pointsAdded += 6;
 			exploding = true;
+			$Hud/BgButton/CPUParticles2D.emitting = true;
 		if (previousFruit == 8):
-			player.change_speed(30);
-			speedChange += 30;
+			player.change_speed(15);
+			speedChange += 15;
 			exploding = true;
+			$Hud/BgButton2/CPUParticles2D.emitting = true;
 	
 	var text = textFeedback.instance();
 	text.set_text(pointsAdded, exploding);
@@ -340,7 +340,7 @@ func update_points(points, fruitLevel):
 	gui.update_points(points, fruitLevel);
 	
 func update_level(newLevel):
-	gui.new_level(newLevel);
+	gui.level_up();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -11,7 +11,7 @@ var baseFruitSpawn = 1;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	fruitToSpawn = load("res://Fruit.tscn"); # Replace with function body.
+	fruitToSpawn = load("res://level/Fruit.tscn"); # Replace with function body.
 
 
 
@@ -25,7 +25,10 @@ func create_fruits(rng):
 	var my_random_number = rng.randi_range(0, 1);
 	var fruits = [];
 	var fruit;
-	var totalFruits = baseFruitSpawn + my_random_number;
+	var positionArray = []
+	var fruitSizeOffset = 64;
+	var newPosition;
+
 	if treeType == 0:
 		my_random_number = rng.randi_range(0, 1);
 		baseFruitSpawn = 1 + my_random_number;
@@ -38,12 +41,12 @@ func create_fruits(rng):
 		$AnimatedSprite.frame = 4;
 	elif treeType == 2:
 		my_random_number = rng.randi_range(0, 2);
-		baseFruitSpawn = 3 + my_random_number;
+		baseFruitSpawn = 2 + my_random_number;
 		$CPUParticles2D.amount = 24;
 		$AnimatedSprite.frame = 3;
 	elif treeType == 3:
 		my_random_number = rng.randi_range(0, 2);
-		baseFruitSpawn = 3 + my_random_number;
+		baseFruitSpawn = 2 + my_random_number;
 		$CPUParticles2D.amount = 18;
 		$AnimatedSprite.frame = 0;
 	elif treeType == 4:
@@ -58,11 +61,11 @@ func create_fruits(rng):
 		$AnimatedSprite.frame = 2;
 	elif treeType == 6:
 		my_random_number = rng.randi_range(0, 3);
-		baseFruitSpawn = 3 + my_random_number;
+		baseFruitSpawn = 2 + my_random_number;
 		$CPUParticles2D.amount = 12;
 		$AnimatedSprite.frame = 2;
 	elif treeType == 7:
-		my_random_number = rng.randi_range(0, 10);
+		my_random_number = rng.randi_range(0, 8);
 		baseFruitSpawn = 6 + my_random_number;
 		$CPUParticles2D.amount = 12;
 		$AnimatedSprite.frame = 0;
@@ -73,26 +76,25 @@ func create_fruits(rng):
 		$AnimatedSprite.frame = 1;
 	elif treeType == 9:
 		my_random_number = rng.randi_range(0, 5);
-		baseFruitSpawn = 3 + my_random_number;
+		baseFruitSpawn = 2 + my_random_number;
 		$CPUParticles2D.amount = 12;
 		$AnimatedSprite.frame = 1;
+	var totalFruits = baseFruitSpawn + my_random_number;
+	
+
+	for m in range (-8, 7):
+			my_random_number = rng.randi_range(-32,10);
+			positionArray.append(Vector2((m * fruitSizeOffset)+ my_random_number,256 + my_random_number));
+			positionArray.append(Vector2(256 + my_random_number, (m * fruitSizeOffset)+ my_random_number));
+			positionArray.append(Vector2((m * fruitSizeOffset)+ my_random_number,-256 + my_random_number));
+			positionArray.append(Vector2(-256 + my_random_number, (m * fruitSizeOffset)+ my_random_number));
+	positionArray.shuffle();
 	
 	for n in totalFruits:
 		fruit = fruitToSpawn.instance();
 		add_child(fruit);
-		my_random_number = rng.randi_range(0,3);
-		if (my_random_number < 1):
-			my_random_number = rng.randi_range(64,191); # 255 - 64 & 0 +64
-			fruit.position = Vector2(255, my_random_number);
-		elif (my_random_number < 1):
-			my_random_number = rng.randi_range(64,191); # 255 - 64 & 0 +64
-			fruit.position = Vector2(-255, my_random_number);
-		elif (my_random_number < 3):
-			my_random_number = rng.randi_range(64,191); # 255 - 64 & 0 +64
-			fruit.position = Vector2(my_random_number, 255);
-		else:
-			my_random_number = rng.randi_range(64,191); # 255 - 64 & 0 +64
-			fruit.position = Vector2(my_random_number, -255);
+			
+		fruit.position = positionArray.pop_back();
 		fruit.assign_type(treeType);
 		fruits.append(fruit);
 	

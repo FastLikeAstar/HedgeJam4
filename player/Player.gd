@@ -143,31 +143,30 @@ func change_points(deltaPoints):
 	if (fruitPoints > fruitPointBreakPoint):
 		fruitLevel += 1;
 		fruitPoints -= fruitPointBreakPoint;
-		if (fruitLevel > 5):
-			$AudioManager.player_levelup()
+		if (fruitLevel >= 5):
+			AudioManager.player_levelup()
 			emit_signal("game_win");
 			end_session();
 			print("Game Won");
 		else:
 			emit_signal("level_up", fruitLevel);
 			if (fruitLevel == 1):
-				$AudioManager.player_levelup()
+				AudioManager.player_levelup()
 				$AnimatedSprite.scale = Vector2(1.1, 1.1);
 				print("Level 1");
 			elif (fruitLevel == 2):
-				$AudioManager.player_levelup()
+				AudioManager.player_levelup()
 				$AnimatedSprite.scale = Vector2(1.2, 1.2);
 				AudioManager.player_idle();
 				print("Level 2");
 			elif (fruitLevel == 3):
-				$AudioManager.player_levelup()
+				AudioManager.player_levelup()
 				$AnimatedSprite.scale = Vector2(1.4, 1.4);
 				print("Level 3");
-				$AudioManager.player_levelup()
 			elif (fruitLevel == 4):
 				AudioManager.player_idle();
 				print("Level 4");
-				$AudioManager.player_levelup()
+				AudioManager.player_levelup()
 				$AnimatedSprite.scale = Vector2(1.8, 1.8);
 	emit_signal("current_points", fruitPoints, fruitLevel);
 

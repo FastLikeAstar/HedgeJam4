@@ -21,7 +21,7 @@ func _on_PlayAgain_button_down():
 
 
 func _on_MainMenu_button_down():
-	get_tree().change_scene("res://Menu.tscn");
+	get_tree().change_scene("res://menus/Menu.tscn");
 
 func game_won(points :float, previous_highscore:float):
 	var thisMinutes := points / 60;

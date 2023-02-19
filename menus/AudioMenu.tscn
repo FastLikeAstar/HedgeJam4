@@ -61,7 +61,7 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_vertical = 1
 min_value = -40.0
-max_value = 0.0
+max_value = 1.0
 tick_count = 10
 
 [node name="masterMute" type="CheckButton" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
@@ -90,7 +90,7 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_vertical = 1
 min_value = -40.0
-max_value = 0.0
+max_value = 1.0
 tick_count = 10
 
 [node name="musicMute" type="CheckButton" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
@@ -119,7 +119,7 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_vertical = 1
 min_value = -40.0
-max_value = 0.0
+max_value = 1.0
 tick_count = 10
 
 [node name="fxMute" type="CheckButton" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
@@ -148,7 +148,7 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_vertical = 1
 min_value = -40.0
-max_value = 0.0
+max_value = 1.0
 tick_count = 10
 
 [node name="spacebarMute" type="CheckButton" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
