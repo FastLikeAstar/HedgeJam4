@@ -50,10 +50,29 @@ margin_bottom = 31.0
 text = "Previous Score
 "
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 316.0
 margin_right = 1024.0
-margin_bottom = 336.0
+margin_bottom = 340.0
+alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer6"]
+margin_left = 452.0
+margin_right = 510.0
+margin_bottom = 24.0
+max_length = 15
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer6"]
+margin_left = 514.0
+margin_right = 571.0
+margin_bottom = 24.0
+text = "Submit"
+script = ExtResource( 2 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 344.0
+margin_right = 1024.0
+margin_bottom = 364.0
 alignment = 1
 
 [node name="PlayAgain" type="Button" parent="VBoxContainer/HBoxContainer2"]
@@ -63,9 +82,9 @@ margin_bottom = 20.0
 text = "Play Again"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 340.0
+margin_top = 368.0
 margin_right = 1024.0
-margin_bottom = 360.0
+margin_bottom = 388.0
 alignment = 1
 
 [node name="MainMenu" type="Button" parent="VBoxContainer/HBoxContainer3"]
@@ -74,23 +93,6 @@ margin_right = 553.0
 margin_bottom = 20.0
 text = "Main Menu"
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 364.0
-margin_right = 1024.0
-margin_bottom = 388.0
-
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer6"]
-margin_right = 58.0
-margin_bottom = 24.0
-max_length = 15
-
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer6"]
-margin_left = 62.0
-margin_right = 119.0
-margin_bottom = 24.0
-text = "Submit"
-script = ExtResource( 2 )
-
+[connection signal="pressed" from="VBoxContainer/HBoxContainer6/Button" to="." method="_on_Button_pressed"]
 [connection signal="button_down" from="VBoxContainer/HBoxContainer2/PlayAgain" to="." method="_on_PlayAgain_button_down"]
 [connection signal="button_down" from="VBoxContainer/HBoxContainer3/MainMenu" to="." method="_on_MainMenu_button_down"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer6/Button" to="." method="_on_Button_pressed"]
