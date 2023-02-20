@@ -1,14 +1,22 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://rainbowBlockGradiant.tres" type="Gradient" id=1]
 [ext_resource path="res://level/Gui.gd" type="Script" id=2]
 [ext_resource path="res://bgGradiant.tres" type="Gradient" id=3]
 [ext_resource path="res://art/points_rim.png" type="Texture" id=4]
 [ext_resource path="res://art/level_up_rim.png" type="Texture" id=5]
+[ext_resource path="res://art/bloonanas_special0001.png" type="Texture" id=6]
 [ext_resource path="res://art/tiny_heart.png" type="Texture" id=7]
 [ext_resource path="res://art/circleButton.png" type="Texture" id=8]
 [ext_resource path="res://PatrickHand-Regular.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://art/circle.png" type="Texture" id=10]
+[ext_resource path="res://art/bloonanas_special0000.png" type="Texture" id=11]
+[ext_resource path="res://art/banana.png" type="Texture" id=12]
+[ext_resource path="res://art/orange.png" type="Texture" id=14]
+[ext_resource path="res://art/mango.png" type="Texture" id=15]
+[ext_resource path="res://art/pineapple.png" type="Texture" id=16]
+[ext_resource path="res://art/pear.png" type="Texture" id=17]
+[ext_resource path="res://art/berry.png" type="Texture" id=18]
 
 [sub_resource type="Gradient" id=7]
 colors = PoolColorArray( 0.329412, 0.32549, 0.32549, 1, 0.329412, 0.32549, 0.32549, 1 )
@@ -49,6 +57,142 @@ colors = PoolColorArray( 0, 0, 0, 0.607843, 0, 0, 0, 0.607843 )
 
 [sub_resource type="GradientTexture" id=13]
 gradient = SubResource( 12 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="SpriteFrames" id=18]
+animations = [ {
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "banana",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 15 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "banana2",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "berry",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "cherries",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "grapes",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 16 ) ],
+"loop": true,
+"name": "mango",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "melon",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 17 ) ],
+"loop": true,
+"name": "orange",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "pear",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "pineapple",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=19]
+animations = [ {
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "banana",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 15 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "banana2",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "berry",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "cherries",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "grapes",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 16 ) ],
+"loop": true,
+"name": "mango",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "melon",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 17 ) ],
+"loop": true,
+"name": "orange",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "pear",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "pineapple",
+"speed": 5.0
+} ]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -97,15 +241,6 @@ margin_bottom = 47.0
 custom_fonts/font = SubResource( 14 )
 align = 1
 
-[node name="PointsCombo" type="Sprite" parent="."]
-position = Vector2( 61, 468 )
-z_index = 5
-z_as_relative = false
-
-[node name="SpeedCombo" type="Sprite" parent="."]
-position = Vector2( 61, 544 )
-z_index = 5
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.15
 autostart = true
@@ -113,14 +248,14 @@ autostart = true
 [node name="BgButton" type="Sprite" parent="."]
 position = Vector2( 60, 468 )
 z_index = -2
+z_as_relative = false
 texture = ExtResource( 8 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="BgButton"]
 z_index = -2
 z_as_relative = false
 emitting = false
-amount = 30
-lifetime = 2.53
+amount = 300
 one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 1.0
@@ -128,7 +263,7 @@ texture = ExtResource( 10 )
 direction = Vector2( 1, -1 )
 spread = 90.0
 gravity = Vector2( 0, 0 )
-initial_velocity = 85.0
+initial_velocity = 150.0
 initial_velocity_random = 0.88
 radial_accel = 1.0
 color_initial_ramp = ExtResource( 1 )
@@ -136,14 +271,14 @@ color_initial_ramp = ExtResource( 1 )
 [node name="BgButton2" type="Sprite" parent="."]
 position = Vector2( 60, 544 )
 z_index = -2
+z_as_relative = false
 texture = ExtResource( 8 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="BgButton2"]
 z_index = -2
 z_as_relative = false
 emitting = false
-amount = 20
-lifetime = 2.3
+amount = 200
 one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 1.0
@@ -151,7 +286,7 @@ texture = ExtResource( 10 )
 direction = Vector2( 1, -1 )
 spread = 90.0
 gravity = Vector2( 0, 0 )
-initial_velocity = 200.0
+initial_velocity = 250.0
 initial_velocity_random = 0.78
 radial_accel = 1.0
 color_initial_ramp = ExtResource( 1 )
@@ -195,6 +330,7 @@ scroll_active = false
 position = Vector2( -21, -38 )
 scale = Vector2( 1.09813, 1.09813 )
 z_index = -3
+z_as_relative = false
 texture = SubResource( 13 )
 polygon = PoolVector2Array( -12, 388, 119, 386, 119, 600, 58, 599.523, -13, 599 )
 
@@ -202,7 +338,20 @@ polygon = PoolVector2Array( -12, 388, 119, 386, 119, 600, 58, 599.523, -13, 599 
 position = Vector2( 464, -120 )
 scale = Vector2( 1.09813, 0.304306 )
 z_index = -3
+z_as_relative = false
 texture = SubResource( 13 )
 polygon = PoolVector2Array( -12.7489, 387.768, 142.06, 387.768, 142.97, 598.082, 58, 599.523, -13.6596, 601.368 )
+
+[node name="PointsCombo" type="AnimatedSprite" parent="."]
+position = Vector2( 61, 468 )
+z_index = 5
+z_as_relative = false
+frames = SubResource( 18 )
+
+[node name="SpeedCombo" type="AnimatedSprite" parent="."]
+position = Vector2( 61, 544 )
+z_index = 5
+z_as_relative = false
+frames = SubResource( 19 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

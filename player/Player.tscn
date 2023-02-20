@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://art/oonana_idle_left.png" type="Texture" id=2]
@@ -8,25 +8,28 @@
 [ext_resource path="res://rainbowBlockGradiant.tres" type="Gradient" id=6]
 [ext_resource path="res://art/sparkle.png" type="Texture" id=7]
 [ext_resource path="res://art/tiny_sparkle.png" type="Texture" id=8]
-[ext_resource path="res://art/oonana_right_moving0003.png" type="Texture" id=11]
-[ext_resource path="res://art/oonana_right_moving0002.png" type="Texture" id=12]
-[ext_resource path="res://art/oonana_right_moving0001.png" type="Texture" id=13]
-[ext_resource path="res://art/oonana_right_moving0000.png" type="Texture" id=14]
+[ext_resource path="res://art/oonana_moving_sides0006.png" type="Texture" id=9]
+[ext_resource path="res://art/oonana_moving_sides0001.png" type="Texture" id=10]
+[ext_resource path="res://art/oonana_moving_sides0003.png" type="Texture" id=11]
+[ext_resource path="res://art/oonana_moving_sides0004.png" type="Texture" id=12]
+[ext_resource path="res://art/oonana_moving_sides0005.png" type="Texture" id=13]
+[ext_resource path="res://art/oonana_moving_sides0000.png" type="Texture" id=14]
 [ext_resource path="res://art/banana.png" type="Texture" id=15]
 [ext_resource path="res://art/oonana_moving_down0003.png" type="Texture" id=16]
-[ext_resource path="res://art/oonana_moving_down_f0006.png" type="Texture" id=17]
+[ext_resource path="res://art/oonana_moving_sides0002.png" type="Texture" id=17]
 [ext_resource path="res://art/oonana_moving_down0005.png" type="Texture" id=18]
 [ext_resource path="res://art/oonana_moving_down0001.png" type="Texture" id=19]
-[ext_resource path="res://art/oonana_moving_down_f0004.png" type="Texture" id=20]
-[ext_resource path="res://art/oonana_moving_down_f0000.png" type="Texture" id=21]
-[ext_resource path="res://art/oonana_moving_down_f0002.png" type="Texture" id=22]
-[ext_resource path="res://art/oonana_moving_down_f0005.png" type="Texture" id=23]
+[ext_resource path="res://art/oonana_moving_sides0007.png" type="Texture" id=20]
+[ext_resource path="res://art/oonana_moving_up0004.png" type="Texture" id=21]
+[ext_resource path="res://art/oonana_moving_up0005.png" type="Texture" id=22]
+[ext_resource path="res://art/oonana_moving_up0001.png" type="Texture" id=23]
 [ext_resource path="res://art/oonana_moving_down0006.png" type="Texture" id=24]
-[ext_resource path="res://art/oonana_moving_down_f0003.png" type="Texture" id=25]
+[ext_resource path="res://art/oonana_moving_up0003.png" type="Texture" id=25]
 [ext_resource path="res://art/oonana_moving_down0004.png" type="Texture" id=26]
 [ext_resource path="res://art/oonana_moving_down0000.png" type="Texture" id=27]
-[ext_resource path="res://art/oonana_moving_down_f0001.png" type="Texture" id=28]
+[ext_resource path="res://art/oonana_moving_up0000.png" type="Texture" id=28]
 [ext_resource path="res://art/oonana_moving_down0002.png" type="Texture" id=29]
+[ext_resource path="res://art/oonana_moving_up0002.png" type="Texture" id=30]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -38,41 +41,6 @@ region = Rect2( 0, 0, 128, 128 )
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=12]
-flags = 4
-atlas = ExtResource( 27 )
-region = Rect2( 0, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=13]
-flags = 4
-atlas = ExtResource( 28 )
-region = Rect2( 0, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=14]
-flags = 4
-atlas = ExtResource( 29 )
-region = Rect2( 0, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=8]
-flags = 4
-atlas = ExtResource( 14 )
-region = Rect2( 0, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=9]
-flags = 4
-atlas = ExtResource( 13 )
-region = Rect2( 0, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=10]
-flags = 4
-atlas = ExtResource( 12 )
-region = Rect2( 0, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=11]
-flags = 4
-atlas = ExtResource( 11 )
 region = Rect2( 0, 0, 128, 128 )
 
 [sub_resource type="SpriteFrames" id=3]
@@ -92,15 +60,25 @@ animations = [ {
 "name": "idle_right",
 "speed": 0.0
 }, {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 19 ), ExtResource( 22 ), ExtResource( 16 ), ExtResource( 20 ), ExtResource( 18 ), ExtResource( 17 ) ],
+"frames": [ ExtResource( 27 ), ExtResource( 19 ) ],
 "loop": true,
 "name": "moving_down",
-"speed": 6.0
+"speed": 9.0
 }, {
-"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"frames": [ ExtResource( 14 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 9 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "moving_left",
+"speed": 9.0
+}, {
+"frames": [  ],
 "loop": true,
 "name": "moving_right",
 "speed": 12.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 23 ), ExtResource( 30 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "moving_up",
+"speed": 9.0
 } ]
 
 [node name="Player" type="KinematicBody2D"]
@@ -146,8 +124,8 @@ color_ramp = ExtResource( 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
-animation = "moving_down"
-frame = 3
+animation = "moving_up"
+frame = 1
 playing = true
 
 [node name="DeathParticles" type="CPUParticles2D" parent="."]

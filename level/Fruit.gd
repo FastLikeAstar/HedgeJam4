@@ -17,33 +17,33 @@ func _ready():
 func assign_type(type):
 	fruitType = type;
 	if (fruitType == 9):
-		$AnimatedSprite.animation =  "pineapple";
-		print("pinapple");
+		$AnimatedSprite.animation =  "pear";
+
 	elif (fruitType == 8):
-		$AnimatedSprite.animation =  "mango";
-		self.modulate = Color(0.8,0,0);
+		$AnimatedSprite.animation =  "orange";
+
 	elif (fruitType == 7):
 		$AnimatedSprite.animation =  "berry";
 	elif (fruitType == 6):
-		$AnimatedSprite.animation =  "orange";
-		self.modulate = Color(0,0,1);
+		$AnimatedSprite.animation =  "cherries";
+
 	elif (fruitType == 5):
-		$AnimatedSprite.animation =  "pear";
+		$AnimatedSprite.animation =  "grapes";
 	elif (fruitType == 4):
-		$AnimatedSprite.animation =  "orange";
-		self.modulate = Color(0.8,0,0);
-	elif (fruitType == 3):
 		$AnimatedSprite.animation =  "mango";
-		self.modulate = Color(1,1,1);
+
+	elif (fruitType == 3):
+		$AnimatedSprite.animation =  "melon";
+
 	elif (fruitType == 2):
-		$AnimatedSprite.animation =  "orange";
-		self.modulate = Color(1,1,1);
+		$AnimatedSprite.animation =  "pineapple";
+
 	elif (fruitType == 1):
 		$AnimatedSprite.animation =  "banana";
-		self.modulate = Color(1,1,1);
+
 	elif (fruitType == 0):
 		$AnimatedSprite.animation =  "banana2";
-		self.modulate = Color(1,1,1);
+
 	location = self.get_global_position();
 	
 

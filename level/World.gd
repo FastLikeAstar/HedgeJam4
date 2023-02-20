@@ -116,8 +116,8 @@ func fruit_consumed_update(fruit, fruitLocation):
 		player.change_points(30);
 		pointsAdded += 30;
 		speedChange -= 40;
-		$Hud/PointsCombo.set_texture(bananaTexture);
-		$Hud/SpeedCombo.set_texture(orangeTexture);
+		$Hud.update_point_combo(1);
+		$Hud/SpeedCombo.animation =  "pineapple";
 		if (previousFruit == 1):
 			$Hud/BgButton/CPUParticles2D.emitting = true;
 			player.change_points(20);
@@ -133,13 +133,13 @@ func fruit_consumed_update(fruit, fruitLocation):
 	elif (fruit == 1):
 		AudioManager.play_fx("big_chomp");
 		player.change_speed(-20);
-		player.change_points(15);
+		player.change_points(10);
 		speedChange -= 20;
 		pointsAdded += 15;
-		$Hud/PointsCombo.set_texture(pineappleTexture);
-		$Hud/SpeedCombo.set_texture(pineappleTexture);
+		$Hud.update_point_combo(5);
+		$Hud/SpeedCombo.animation =  "cherries";
 		if (previousFruit == 5):
-			player.change_points(10);
+			player.change_points(15);
 			exploding = true;
 			pointsAdded += 10;
 			$Hud/BgButton/CPUParticles2D.emitting = true;
@@ -149,15 +149,15 @@ func fruit_consumed_update(fruit, fruitLocation):
 			exploding = true;
 			$Hud/BgButton2/CPUParticles2D.emitting = true;
 			
-	# Orange
+	# Pineapple
 	elif (fruit == 2):
 		AudioManager.play_fx("big_chomp");
 		player.change_points(5);
 		player.change_speed(10);
 		pointsAdded += 5;
 		speedChange += 10;
-		$Hud/PointsCombo.set_texture(mangoTexture);
-		$Hud/SpeedCombo.set_texture(berryTexture);
+		$Hud.update_point_combo(3);
+		$Hud/SpeedCombo.animation =  "berry";
 		if (previousFruit == 3):
 			player.change_points(10);
 			exploding = true;
@@ -169,13 +169,13 @@ func fruit_consumed_update(fruit, fruitLocation):
 			exploding = true;
 			$Hud/BgButton2/CPUParticles2D.emitting = true;
 	
-	# Mango 2
+	# Melon
 	elif (fruit == 3):
 		AudioManager.play_fx("big_chomp");
 		player.change_points(5);
 		pointsAdded += 5;
-		$Hud/PointsCombo.set_texture(orangeTexture);
-		$Hud/SpeedCombo.set_texture(mangoTexture);
+		$Hud.update_point_combo(4);
+		$Hud/SpeedCombo.animation =  "orange";
 		if (previousFruit == 4):
 			player.change_points(15);
 			pointsAdded += 15;
@@ -187,13 +187,13 @@ func fruit_consumed_update(fruit, fruitLocation):
 			exploding = true;
 			$Hud/BgButton2/CPUParticles2D.emitting = true;
 		
-	# Orange
+	# Mango
 	elif (fruit == 4):
 		AudioManager.play_fx("medium_chomp");
 		player.change_speed(10);
 		speedChange += 10;
-		$Hud/PointsCombo.set_texture(orangeTexture);
-		$Hud/SpeedCombo.set_texture(berryTexture);
+		$Hud.update_point_combo(2);
+		$Hud/SpeedCombo.animation =  "pear";
 		if (previousFruit == 2):
 			player.change_points(10);
 			pointsAdded += 10;
@@ -205,15 +205,15 @@ func fruit_consumed_update(fruit, fruitLocation):
 			exploding = true;
 			$Hud/BgButton2/CPUParticles2D.emitting = true;
 		
-	# Pineapple 2
+	# Grapes
 	elif (fruit == 5):
 		AudioManager.play_fx("big_chomp");
 		player.change_speed(-10);
 		player.change_points(10);
 		speedChange -= 10;
 		pointsAdded += 10;
-		$Hud/PointsCombo.set_texture(banana2Texture);
-		$Hud/SpeedCombo.set_texture(bananaTexture);
+		$Hud.update_point_combo(8);
+		$Hud/SpeedCombo.animation =  "pear";
 		if (previousFruit == 1):
 			player.change_points(8);
 			pointsAdded += 8;
@@ -225,13 +225,13 @@ func fruit_consumed_update(fruit, fruitLocation):
 			exploding = true;
 			$Hud/BgButton2/CPUParticles2D.emitting = true;
 		
-	#Pineapple
+	# Cherries
 	elif (fruit == 6):
 		AudioManager.play_fx("big_chomp");
 		player.change_points(5);
 		pointsAdded += 5;
-		$Hud/PointsCombo.set_texture(orangeTexture);
-		$Hud/SpeedCombo.set_texture(bananaTexture);
+		$Hud.update_point_combo(5);
+		$Hud/SpeedCombo.animation =  "pear";
 		if (previousFruit == 2):
 			player.change_points(5);
 			pointsAdded += 5;
@@ -250,8 +250,8 @@ func fruit_consumed_update(fruit, fruitLocation):
 		player.change_points(1);
 		speedChange += 2;
 		pointsAdded += 1;
-		$Hud/PointsCombo.set_texture(orangeTexture);
-		$Hud/SpeedCombo.set_texture(bananaTexture);
+		$Hud.update_point_combo(2);
+		$Hud/SpeedCombo.animation =  "pear";
 		if (previousFruit == 2):
 			player.change_points(5);
 			pointsAdded += 5;
@@ -267,13 +267,13 @@ func fruit_consumed_update(fruit, fruitLocation):
 			exploding = true;
 			$Hud/BgButton2/CPUParticles2D.emitting = true;
 	
-	# Mango
+	# Orange
 	elif (fruit == 8):
 		AudioManager.play_fx("medium_chomp");
 		player.change_points(4);
 		pointsAdded += 4;
-		$Hud/PointsCombo.set_texture(orangeTexture);
-		$Hud/SpeedCombo.set_texture(berryTexture);
+		$Hud.update_point_combo(4);
+		$Hud/SpeedCombo.animation =  "berry";
 		if (previousFruit == 4):
 			player.change_points(5);
 			pointsAdded += 5;
@@ -285,13 +285,13 @@ func fruit_consumed_update(fruit, fruitLocation):
 			exploding = true;
 			$Hud/BgButton2/CPUParticles2D.emitting = true;
 			
-	# Banana
+	# Pear
 	elif (fruit == 9):
 		AudioManager.play_fx("medium_chomp");
 		player.change_points(3);
 		pointsAdded += 3;
-		$Hud/PointsCombo.set_texture(pineappleTexture);
-		$Hud/SpeedCombo.set_texture(mangoTexture);
+		$Hud.update_point_combo(5);
+		$Hud/SpeedCombo.animation =  "orange";
 		if (previousFruit == 5):
 			player.change_points(6);
 			pointsAdded += 6;
@@ -304,7 +304,7 @@ func fruit_consumed_update(fruit, fruitLocation):
 			$Hud/BgButton2/CPUParticles2D.emitting = true;
 	
 	var text = textFeedback.instance();
-	text.set_text(pointsAdded, exploding);
+	text.set_text(pointsAdded, false);
 	text.position = fruitLocation;
 	add_child(text);
 	previousFruit = fruit;
