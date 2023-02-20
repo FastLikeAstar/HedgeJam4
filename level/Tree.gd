@@ -28,55 +28,55 @@ func create_fruits(rng):
 	var positionArray = []
 	var fruitSizeOffset = 64;
 	var newPosition;
-
-	if treeType == 0:
+	
+	if treeType == 0: # banana 2
 		my_random_number = rng.randi_range(0, 1);
 		baseFruitSpawn = 1 + my_random_number;
 		$CPUParticles2D.amount = 30;
 		$AnimatedSprite.frame = 4;
-	elif treeType == 1:
-		my_random_number = rng.randi_range(0, 4);
+	elif treeType == 1: # banana
+		my_random_number = rng.randi_range(0, 2);
 		baseFruitSpawn = 2 + my_random_number;
 		$CPUParticles2D.amount = 24;
 		$AnimatedSprite.frame = 4;
-	elif treeType == 2:
+	elif treeType == 2: # Pineapple
 		my_random_number = rng.randi_range(0, 2);
 		baseFruitSpawn = 2 + my_random_number;
 		$CPUParticles2D.amount = 24;
 		$AnimatedSprite.frame = 3;
-	elif treeType == 3:
+	elif treeType == 3: # Melon
 		my_random_number = rng.randi_range(0, 2);
-		baseFruitSpawn = 2 + my_random_number;
+		baseFruitSpawn = 1 + my_random_number;
 		$CPUParticles2D.amount = 18;
 		$AnimatedSprite.frame = 0;
-	elif treeType == 4:
-		my_random_number = rng.randi_range(0, 3);
-		baseFruitSpawn = 2 + my_random_number;
+	elif treeType == 4: # Mango
+		my_random_number = rng.randi_range(0, 2);
+		baseFruitSpawn = 3 + my_random_number;
 		$CPUParticles2D.amount = 18;
 		$AnimatedSprite.frame = 3;
-	elif treeType == 5:
-		my_random_number = rng.randi_range(0, 2);
-		baseFruitSpawn = 2 + my_random_number;
+	elif treeType == 5: # Grapes
+		my_random_number = rng.randi_range(0, 4);
+		baseFruitSpawn = 4 + my_random_number;
 		$CPUParticles2D.amount = 18;
 		$AnimatedSprite.frame = 2;
-	elif treeType == 6:
-		my_random_number = rng.randi_range(0, 3);
-		baseFruitSpawn = 2 + my_random_number;
+	elif treeType == 6: # Cherries
+		my_random_number = rng.randi_range(0, 5);
+		baseFruitSpawn = 5 + my_random_number;
 		$CPUParticles2D.amount = 12;
 		$AnimatedSprite.frame = 2;
-	elif treeType == 7:
-		my_random_number = rng.randi_range(0, 8);
+	elif treeType == 7: # raspberries
+		my_random_number = rng.randi_range(0, 6);
 		baseFruitSpawn = 6 + my_random_number;
 		$CPUParticles2D.amount = 12;
 		$AnimatedSprite.frame = 0;
-	elif treeType == 8:
+	elif treeType == 8: # orange 
 		my_random_number = rng.randi_range(0, 2);
-		baseFruitSpawn = 2 + my_random_number;
+		baseFruitSpawn = 3 + my_random_number;
 		$CPUParticles2D.amount = 12;
 		$AnimatedSprite.frame = 1;
-	elif treeType == 9:
-		my_random_number = rng.randi_range(0, 5);
-		baseFruitSpawn = 2 + my_random_number;
+	elif treeType == 9: # pear
+		my_random_number = rng.randi_range(0, 3);
+		baseFruitSpawn = 3 + my_random_number;
 		$CPUParticles2D.amount = 12;
 		$AnimatedSprite.frame = 1;
 	var totalFruits = baseFruitSpawn + my_random_number;

@@ -16,8 +16,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
-ScoreHolder="*res://ScoreHolder.tscn"
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 AudioManager="*res://audio/AudioManager.tscn"
+Highscore="*res://highscore.gd"
 
 [gui]
 

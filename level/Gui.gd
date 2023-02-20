@@ -37,43 +37,43 @@ func update_point_combo(fruitType):
 		0:
 			$PointsCombo.animation =  "banana2";
 			$PointsCombo.play();
-			$PointsCombo.z_index = 3;
+
 		1:
 			$PointsCombo.animation =  "banana";
 			$PointsCombo.play();
-			$PointsCombo.z_index = 3;
+
 		2:
 			$PointsCombo.animation =  "pineapple";
 			$PointsCombo.play();
-			$PointsCombo.z_index = 3;
+
 		3:
 			$PointsCombo.animation =  "melon";
 			$PointsCombo.play();
-			$PointsCombo.z_index = 3;
+
 		4:
 			$PointsCombo.animation =  "mango";
 			$PointsCombo.play();
-			$PointsCombo.z_index = 3;
+
 		5:
 			$PointsCombo.animation =  "grapes";
 			$PointsCombo.play();
-			$PointsCombo.z_index = 3;
+			
 		6:
 			$PointsCombo.animation =  "cherries";
 			$PointsCombo.play();
-			$PointsCombo.z_index = 3;
+			
 		7:
 			$PointsCombo.animation =  "berry";
 			$PointsCombo.play();
-			$PointsCombo.z_index = 3;
+			
 		8:
 			$PointsCombo.animation =  "orange";
 			$PointsCombo.play();
-			$PointsCombo.z_index = 3;
+			
 		9:
 			$PointsCombo.animation =  "pear";
 			$PointsCombo.play();
-			$PointsCombo.z_index = 3;
+			
 
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -37,6 +37,7 @@ margin_top = 310.0
 margin_right = 87.0
 margin_bottom = 330.0
 text = "High Scores"
+script = ExtResource( 5 )
 
 [node name="Options" type="Button" parent="HBoxContainer/VBoxContainer"]
 margin_top = 334.0
@@ -54,4 +55,5 @@ bus = "Music"
 [node name="AudioSettings" parent="." instance=ExtResource( 2 )]
 
 [connection signal="button_down" from="HBoxContainer/VBoxContainer/Start" to="." method="_on_Start_button_down"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/High Scores" to="." method="_on_High_Scores_button_down"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]

@@ -10,6 +10,7 @@ var playerLevel;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	AudioServer.set_bus_volume_db(1, -10);
+	
 
 func play_fx(sound):
 	match sound:

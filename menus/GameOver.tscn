@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://menus/GameOver.gd" type="Script" id=1]
+[ext_resource path="res://feedback/ButtonJuice.gd" type="Script" id=2]
 
 [node name="EndScreen" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -11,9 +12,9 @@ anchor_bottom = 1.0
 alignment = 1
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 225.0
+margin_top = 211.0
 margin_right = 1024.0
-margin_bottom = 256.0
+margin_bottom = 242.0
 alignment = 1
 
 [node name="Game Feedback" type="Label" parent="VBoxContainer/HBoxContainer4"]
@@ -24,9 +25,9 @@ text = "Game Over
 "
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 260.0
+margin_top = 246.0
 margin_right = 1024.0
-margin_bottom = 291.0
+margin_bottom = 277.0
 alignment = 1
 
 [node name="Score" type="Label" parent="VBoxContainer/HBoxContainer5"]
@@ -37,9 +38,9 @@ text = "Score:
 "
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 295.0
+margin_top = 281.0
 margin_right = 1024.0
-margin_bottom = 326.0
+margin_bottom = 312.0
 alignment = 1
 
 [node name="PreviousHighscore" type="Label" parent="VBoxContainer/HBoxContainer"]
@@ -50,9 +51,9 @@ text = "Previous Score
 "
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 330.0
+margin_top = 316.0
 margin_right = 1024.0
-margin_bottom = 350.0
+margin_bottom = 336.0
 alignment = 1
 
 [node name="PlayAgain" type="Button" parent="VBoxContainer/HBoxContainer2"]
@@ -62,9 +63,9 @@ margin_bottom = 20.0
 text = "Play Again"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 354.0
+margin_top = 340.0
 margin_right = 1024.0
-margin_bottom = 374.0
+margin_bottom = 360.0
 alignment = 1
 
 [node name="MainMenu" type="Button" parent="VBoxContainer/HBoxContainer3"]
@@ -73,5 +74,23 @@ margin_right = 553.0
 margin_bottom = 20.0
 text = "Main Menu"
 
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 364.0
+margin_right = 1024.0
+margin_bottom = 388.0
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer6"]
+margin_right = 58.0
+margin_bottom = 24.0
+max_length = 15
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer6"]
+margin_left = 62.0
+margin_right = 119.0
+margin_bottom = 24.0
+text = "Submit"
+script = ExtResource( 2 )
+
 [connection signal="button_down" from="VBoxContainer/HBoxContainer2/PlayAgain" to="." method="_on_PlayAgain_button_down"]
 [connection signal="button_down" from="VBoxContainer/HBoxContainer3/MainMenu" to="." method="_on_MainMenu_button_down"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer6/Button" to="." method="_on_Button_pressed"]

@@ -30,3 +30,7 @@ func _on_Start_button_down():
 func _on_Options_pressed():
 	$AudioSettings.show();
 
+
+
+func _on_High_Scores_button_down():
+	get_tree().change_scene("res://menus/ScoreHolder.tscn");

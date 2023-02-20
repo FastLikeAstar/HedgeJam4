@@ -88,7 +88,7 @@ func get_input():
 		$DashFeedback.start(0.5);
 		$DashFeedback.start(0.5);
 
-		runBonus += 20;
+		runBonus += 10;
 		runBonus = clamp(runBonus, 0, maxRunBonus);
 		if (runBonus >= maxRunBonus):
 			$BigDash.emitting = true;
@@ -103,7 +103,7 @@ func get_input():
 	if (velocity.x == 0 && velocity.y == 0):
 		match lastPressedDirection:
 			"up":
-				$AnimatedSprite.animation =  "idle_down";
+				$AnimatedSprite.animation =  "idle_up";
 			"down":
 				$AnimatedSprite.animation =  "idle_down";
 			"left":
@@ -114,12 +114,12 @@ func get_input():
 		if (velocity.y > 0):
 			$AnimatedSprite.animation =  "moving_down";
 		else:
-			$AnimatedSprite.animation =  "moving_down";
+			$AnimatedSprite.animation =  "moving_up";
 	else:
 		if (velocity.x > 0):
 			$AnimatedSprite.animation =  "moving_right";
 		else:
-			$AnimatedSprite.animation =  "idle_left";
+			$AnimatedSprite.animation =  "moving_left";
 			
 
 func _physics_process(_delta):
@@ -180,8 +180,7 @@ func speedup_emit(speedAmount):
 	$SpeedUpParticles.amount = speedAmount *2;
 
 func _on_DashTimer_timeout():
-	runBonus -= runDecrease;
-	runBonus = clamp(runBonus, 0, maxRunBonus);
+	runBonus -= 0;
 
 
 func _on_DashFeedback_timeout():
