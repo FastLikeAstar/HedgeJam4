@@ -10,8 +10,9 @@ config_version=4
 
 [application]
 
-config/name="Hedge Jam 4"
-run/main_scene="res://menus/Menu.tscn"
+config/name="OonanaLovesBloonanas"
+config/description="Oonana loves bloonanas. A game submitted to the Hedge Jam 4."
+run/main_scene="res://menus/Start.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -64,6 +65,11 @@ run_faster={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
+
+[network]
+
+limits/debugger_stdout/max_chars_per_second=4800
+limits/debugger_stdout/max_messages_per_frame=32
 
 [physics]
 

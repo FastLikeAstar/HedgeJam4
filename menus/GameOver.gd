@@ -26,13 +26,11 @@ func _on_MainMenu_button_down():
 	get_tree().change_scene("res://menus/Menu.tscn");
 
 func game_won(points :float, previous_highscore:float):
-	var thisMinutes := points / 60;
 	var thisSeconds := fmod(points, 60);
-	var thisRun = "%02d:%02d" % [thisMinutes, thisSeconds];
-	current_round = thisRun;
-	var minutes := previous_highscore / 60;
-	var seconds := fmod(previous_highscore, 60);
-	var highscore = "%02d:%02d" % [minutes, seconds];
+	var thisRun = "%02d" % [thisSeconds];
+	current_round = thisSeconds;
+	var seconds := previous_highscore;
+	var highscore = "%02d" % [seconds];
 	canSubmit = true;
 	
 	$VBoxContainer/HBoxContainer/PreviousHighscore.text = $VBoxContainer/HBoxContainer/PreviousHighscore.text + highscore;

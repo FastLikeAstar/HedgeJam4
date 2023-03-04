@@ -44,10 +44,10 @@ margin_bottom = 312.0
 alignment = 1
 
 [node name="PreviousHighscore" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_left = 465.0
-margin_right = 559.0
+margin_left = 469.0
+margin_right = 555.0
 margin_bottom = 31.0
-text = "Previous Score
+text = "Time to Beat:
 "
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer"]

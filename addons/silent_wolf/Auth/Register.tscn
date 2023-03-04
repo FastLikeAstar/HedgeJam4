@@ -7,6 +7,10 @@
 [ext_resource path="res://addons/silent_wolf/assets/gfx/info_icon_small.png" type="Texture" id=5]
 [ext_resource path="res://addons/silent_wolf/assets/gfx/dummy_info_icon_small.png" type="Texture" id=6]
 
+[sub_resource type="DynamicFont" id=4]
+size = 64
+font_data = ExtResource( 3 )
+
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 23.0
 content_margin_right = 23.0
@@ -40,10 +44,6 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="DynamicFont" id=4]
-size = 64
-font_data = ExtResource( 3 )
-
 [sub_resource type="DynamicFont" id=5]
 size = 64
 font_data = ExtResource( 3 )
@@ -68,6 +68,11 @@ font_data = ExtResource( 3 )
 size = 32
 font_data = ExtResource( 3 )
 
+[sub_resource type="DynamicFont" id=12]
+size = 32
+outline_color = Color( 0.666667, 0.223529, 0.223529, 1 )
+font_data = ExtResource( 3 )
+
 [sub_resource type="StyleBoxFlat" id=11]
 content_margin_left = 30.0
 content_margin_right = 30.0
@@ -84,11 +89,6 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="DynamicFont" id=12]
-size = 32
-outline_color = Color( 0.666667, 0.223529, 0.223529, 1 )
-font_data = ExtResource( 3 )
-
 [sub_resource type="DynamicFont" id=13]
 size = 32
 outline_color = Color( 0.854902, 0.0901961, 0.0901961, 1 )
@@ -102,19 +102,16 @@ font_data = ExtResource( 3 )
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BackButton" parent="." instance=ExtResource( 2 )]
 margin_left = 241.0
 margin_top = 54.0
 margin_right = 529.0
 margin_bottom = 172.0
+custom_fonts/font = SubResource( 4 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 4 )
 text = "← Back"
 
 [node name="FormContainer" type="VBoxContainer" parent="."]
@@ -143,12 +140,12 @@ margin_bottom = 525.0
 custom_constants/separation = 30
 
 [node name="FormLabels" type="VBoxContainer" parent="FormContainer/MainFormContainer"]
-margin_right = 625.0
+margin_right = 17.0
 margin_bottom = 393.0
 custom_constants/separation = 30
 
 [node name="PlayerNameLabel" type="Label" parent="FormContainer/MainFormContainer/FormLabels"]
-margin_right = 625.0
+margin_right = 17.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 0, 80 )
 custom_fonts/font = SubResource( 6 )
@@ -156,28 +153,28 @@ text = "Username:"
 
 [node name="EmailLabel" type="Label" parent="FormContainer/MainFormContainer/FormLabels"]
 margin_top = 110.0
-margin_right = 625.0
-margin_bottom = 182.0
+margin_right = 17.0
+margin_bottom = 112.0
 custom_fonts/font = SubResource( 6 )
 text = "Email:"
 
 [node name="PasswordLabel" type="Label" parent="FormContainer/MainFormContainer/FormLabels"]
-margin_top = 212.0
-margin_right = 625.0
-margin_bottom = 284.0
+margin_top = 142.0
+margin_right = 17.0
+margin_bottom = 144.0
 custom_fonts/font = SubResource( 6 )
 text = "Password:"
 
 [node name="ConfirmPasswordLabel" type="Label" parent="FormContainer/MainFormContainer/FormLabels"]
-margin_top = 314.0
-margin_right = 625.0
-margin_bottom = 386.0
+margin_top = 174.0
+margin_right = 17.0
+margin_bottom = 176.0
 custom_fonts/font = SubResource( 6 )
 text = "Confirm password:"
 
 [node name="FormInputFields" type="VBoxContainer" parent="FormContainer/MainFormContainer"]
-margin_left = 655.0
-margin_right = 1155.0
+margin_left = 47.0
+margin_right = 547.0
 margin_bottom = 393.0
 custom_constants/separation = 30
 
@@ -215,8 +212,8 @@ max_length = 30
 secret = true
 
 [node name="InfoLabels" type="VBoxContainer" parent="FormContainer/MainFormContainer"]
-margin_left = 1185.0
-margin_right = 1269.0
+margin_left = 577.0
+margin_right = 661.0
 margin_bottom = 393.0
 rect_min_size = Vector2( 40, 0 )
 custom_constants/separation = 24
@@ -249,10 +246,10 @@ visible = false
 margin_right = 1269.0
 margin_bottom = 137.0
 rect_min_size = Vector2( 250, 0 )
-custom_styles/normal = SubResource( 11 )
-custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0.666667, 0.223529, 0.223529, 1 )
 custom_colors/font_outline_modulate = Color( 0.937255, 0.917647, 0.917647, 1 )
+custom_fonts/font = SubResource( 12 )
+custom_styles/normal = SubResource( 11 )
 text = "Password should contain at least 8 characters including uppercase and lowercase letters, numbers and (optionally) special characters."
 autowrap = true
 
@@ -260,8 +257,8 @@ autowrap = true
 visible = false
 margin_right = 1189.0
 margin_bottom = 37.0
-custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0.866667, 0.101961, 0.101961, 1 )
+custom_fonts/font = SubResource( 13 )
 autowrap = true
 
 [node name="RegisterButton" parent="FormContainer" instance=ExtResource( 2 )]
@@ -277,6 +274,7 @@ margin_bottom = 72.0
 custom_fonts/font = SubResource( 14 )
 text = "Processing..."
 align = 1
+
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="mouse_entered" from="FormContainer/MainFormContainer/InfoLabels/UsernameToolButton" to="." method="_on_UsernameToolButton_mouse_entered"]
 [connection signal="mouse_exited" from="FormContainer/MainFormContainer/InfoLabels/UsernameToolButton" to="." method="_on_UsernameToolButton_mouse_exited"]
