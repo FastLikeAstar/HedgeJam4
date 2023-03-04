@@ -24,17 +24,16 @@ onready var camera_position
 #var maxSpeed = 550;
 var baseSpeed = 300;  # speed in pixels/sec
 var velocity = Vector2.ZERO;
-var maxRunBonus = 120;
+var maxRunBonus = 150;
 var bonusSpeed = 0;
 var runBonus = 0;
 var actualSpeed = 0;
 var currentSpeedLevel = 0;
 var attemptedSpeed = 0;
-var runDecrease = 35;
 var fruitLevel = 0;
 var fruitPointBreakPoint = 50;
 var fruitPoints = 0;
-var lowestSpeed = 200;
+var lowestSpeed = 280;
 var lastPressedDirection;
 
 signal level_up;
@@ -88,7 +87,7 @@ func get_input():
 		$DashFeedback.start(0.5);
 		$DashFeedback.start(0.5);
 
-		runBonus += 10;
+		runBonus += 50;
 		runBonus = clamp(runBonus, 0, maxRunBonus);
 		if (runBonus >= maxRunBonus):
 			$BigDash.emitting = true;
@@ -98,7 +97,7 @@ func get_input():
 	
 	# Make sure diagonal movement isn't faster
 	attemptedSpeed = baseSpeed + bonusSpeed + runBonus;
-	actualSpeed = clamp(attemptedSpeed, lowestSpeed, baseSpeed+bonusSpeed);
+	actualSpeed = clamp(attemptedSpeed, lowestSpeed, attemptedSpeed);
 	velocity = velocity.normalized() * actualSpeed;
 	if (velocity.x == 0 && velocity.y == 0):
 		match lastPressedDirection:
@@ -180,7 +179,7 @@ func speedup_emit(speedAmount):
 	$SpeedUpParticles.amount = speedAmount *2;
 
 func _on_DashTimer_timeout():
-	runBonus -= 0;
+	runBonus = 0;
 
 
 func _on_DashFeedback_timeout():

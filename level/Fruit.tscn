@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://art/fruit_sprites.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://level/Fruit.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [node name="Fruit" type="Area2D"]
 script = ExtResource( 2 )
@@ -16,5 +19,18 @@ shape = SubResource( 1 )
 z_index = 1
 frames = ExtResource( 1 )
 animation = "grapes"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 48
+lifetime = 1.6
+lifetime_randomness = 0.1
+emission_shape = 2
+emission_rect_extents = Vector2( 48, 48 )
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 10.0
+initial_velocity_random = 1.0
+color_ramp = SubResource( 2 )
 
 [connection signal="body_entered" from="." to="." method="_on_Fruit_body_entered"]

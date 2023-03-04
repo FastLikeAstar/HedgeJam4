@@ -9,10 +9,11 @@ extends Area2D
 signal fruit_consumed;
 var fruitType;
 var location;
+var worldScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	worldScene = get_tree().get_current_scene();
 
 func assign_type(type):
 	fruitType = type;
@@ -53,5 +54,9 @@ func _on_Fruit_body_entered(body):
 		queue_free();
 		
 	
-
+func _process(delta):
+	if (worldScene.current_points_combo == fruitType) || (worldScene.current_speed_combo == fruitType):
+		$CPUParticles2D.emitting = true;
+	else:
+		$CPUParticles2D.emitting = false;
 

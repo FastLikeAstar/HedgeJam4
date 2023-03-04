@@ -34,4 +34,4 @@ func _on_Options_pressed():
 
 
 func _on_High_Scores_button_down():
-	get_tree().change_scene("res://menus/ScoreHolder.tscn");
+	get_tree().change_scene("res://menus/MyReverseLeaderboard.tscn");

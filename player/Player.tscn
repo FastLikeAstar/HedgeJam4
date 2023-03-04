@@ -125,7 +125,6 @@ color_ramp = ExtResource( 6 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
 animation = "idle_up"
-frame = 1
 playing = true
 
 [node name="DeathParticles" type="CPUParticles2D" parent="."]

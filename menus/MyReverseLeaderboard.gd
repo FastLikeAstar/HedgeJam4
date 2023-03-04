@@ -29,7 +29,7 @@ func render_board(scores):
 			scores.invert()
 		for i in range(len(scores)):
 			var score = scores[i]
-			add_item(score.player_name, str(float(score.score)))
+			add_item(score.player_name, str(int(score.score)))
 			
 			#var time = display_time(scores[i].score)
 			#add_item(score.player_name, time)
